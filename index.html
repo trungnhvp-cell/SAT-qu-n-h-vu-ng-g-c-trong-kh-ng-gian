@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAT Math — Solid Geometry & Perpendicularity | Thầy Nguyễn Hữu Trung</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'\\\\(',right:'\\\\)',display:false},{left:'\\\\[',right:'\\\\]',display:true}]});"></script>
+<style>
+  :root{
+    --sat-blue:#1B3A6B;--sat-blue-light:#2C5AA0;--sat-blue-pale:#EAF0F9;
+    --sat-green:#4CAF50;--sat-red:#E53935;--sat-yellow:#F5B400;
+    --sat-bg:#F5F7FA;--sat-text:#1a2332;--sat-gray:#5b6778;--sat-gold:#F5B400;
+    --shadow:0 2px 8px rgba(27,58,107,.08);
+    --shadow-lg:0 6px 24px rgba(27,58,107,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter','Segoe UI',Roboto,-apple-system,sans-serif;background:var(--sat-bg);color:var(--sat-text);line-height:1.6;}
+  header{background:linear-gradient(135deg,var(--sat-blue) 0%,var(--sat-blue-light) 100%);color:#fff;padding:20px 32px;box-shadow:var(--shadow-lg);position:sticky;top:0;z-index:100;}
+  .header-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  .brand{display:flex;align-items:center;gap:14px}
+  .brand-logo{width:44px;height:44px;border-radius:10px;background:#fff;color:var(--sat-blue);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;letter-spacing:-1px;}
+  .brand-title{font-size:20px;font-weight:700;letter-spacing:.2px}
+  .brand-sub{font-size:12.5px;opacity:.85;font-weight:400}
+  .header-credit{font-size:12.5px;text-align:right;line-height:1.5;background:rgba(255,255,255,.12);padding:8px 16px;border-radius:10px;border-left:3px solid var(--sat-gold);}
+  .header-credit strong{color:var(--sat-gold);font-weight:800}
+  nav{background:#fff;border-bottom:1px solid #e2e8f0;position:sticky;top:84px;z-index:99;overflow-x:auto}
+  .nav-inner{max-width:1200px;margin:0 auto;display:flex;padding:0 16px;gap:4px}
+  .nav-btn{background:none;border:none;padding:16px 20px;font-family:inherit;font-size:14.5px;font-weight:600;color:var(--sat-gray);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:all .2s;}
+  .nav-btn:hover{color:var(--sat-blue);background:var(--sat-blue-pale)}
+  .nav-btn.active{color:var(--sat-blue);border-bottom-color:var(--sat-blue);background:var(--sat-blue-pale)}
+  main{max-width:1200px;margin:0 auto;padding:32px 20px 80px}
+  .section{display:none;animation:fade .35s ease}
+  .section.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  .page-title{font-size:28px;font-weight:800;color:var(--sat-blue);margin-bottom:6px}
+  .page-subtitle{color:var(--sat-gray);margin-bottom:28px;font-size:15px}
+  .card{background:#fff;border-radius:14px;padding:26px 28px;box-shadow:var(--shadow);margin-bottom:20px;border:1px solid #eef2f8;}
+  .card h3{font-size:20px;color:var(--sat-blue);margin-bottom:14px;padding-bottom:10px;border-bottom:2px solid var(--sat-blue-pale);display:flex;align-items:center;gap:10px;}
+  .card h3 .num{background:var(--sat-blue);color:#fff;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;}
+  .card h4{font-size:16px;color:var(--sat-blue-light);margin:16px 0 8px}
+  .card p,.card li{margin-bottom:8px}
+  .card ul,.card ol{padding-left:24px}
+  .card ol li,.card ul li{margin-bottom:6px}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14.5px}
+  th,td{padding:12px 14px;text-align:left;border-bottom:1px solid #eef2f8;vertical-align:top}
+  th{background:var(--sat-blue-pale);color:var(--sat-blue);font-weight:700;font-size:13.5px;text-transform:uppercase;letter-spacing:.5px}
+  tr:hover td{background:#fafcff}
+  .formula-box{background:linear-gradient(135deg,#f0f5ff 0%,#e6efff 100%);border-left:4px solid var(--sat-blue);border-radius:10px;padding:14px 18px;margin:12px 0;font-size:15.5px;}
+  .formula-box strong{color:var(--sat-blue);font-weight:800}
+  .vocab-search{width:100%;padding:12px 16px;border:2px solid #e2e8f0;border-radius:10px;font-family:inherit;font-size:15px;margin-bottom:16px;}
+  .vocab-search:focus{outline:none;border-color:var(--sat-blue-light)}
+  .vocab-table td:nth-child(2){font-family:'Courier New',monospace;color:var(--sat-blue);font-weight:600}
+  .speak-btn{background:none;border:none;cursor:pointer;color:var(--sat-blue);padding:4px 8px;border-radius:6px;transition:background .2s;font-size:15px;}
+  .speak-btn:hover{background:var(--sat-blue-pale)}
+  .group-tabs{display:flex;gap:8px;margin-bottom:24px;flex-wrap:wrap}
+  .group-tab{padding:12px 22px;border-radius:10px;border:2px solid #e2e8f0;background:#fff;font-family:inherit;font-size:14px;font-weight:700;cursor:pointer;color:var(--sat-gray);transition:all .2s;}
+  .group-tab:hover{border-color:var(--sat-blue-light)}
+  .group-tab.active{background:var(--sat-blue);color:#fff;border-color:var(--sat-blue)}
+  .group-tab .badge{display:inline-block;margin-left:6px;background:rgba(255,255,255,.25);padding:1px 8px;border-radius:8px;font-size:12px}
+  .group-tab:not(.active) .badge{background:var(--sat-blue-pale);color:var(--sat-blue)}
+  .group-panel{display:none}
+  .group-panel.active{display:block}
+  .q-card{background:#fff;border-radius:14px;padding:24px 26px;box-shadow:var(--shadow);margin-bottom:18px;border-left:5px solid var(--sat-blue-light);transition:border-color .3s;}
+  .q-card.correct{border-left-color:var(--sat-green)}
+  .q-card.wrong{border-left-color:var(--sat-red)}
+  .q-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+  .q-num{background:var(--sat-blue);color:#fff;min-width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex-shrink:0;}
+  .q-card.correct .q-num{background:var(--sat-green)}
+  .q-card.wrong .q-num{background:var(--sat-red)}
+  .q-text{font-size:16px;font-weight:500;flex:1}
+  .options{display:grid;gap:10px;margin-top:16px}
+  .option{display:flex;align-items:flex-start;gap:12px;padding:14px 18px;border:2px solid #e2e8f0;border-radius:10px;background:#fff;cursor:pointer;transition:all .18s;font-family:inherit;font-size:15px;text-align:left;color:var(--sat-text);width:100%;}
+  .option:hover:not(.disabled){border-color:var(--sat-blue-light);background:#fafcff;transform:translateX(2px)}
+  .option .letter{background:var(--sat-blue-pale);color:var(--sat-blue);width:28px;height:28px;border-radius:7px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;}
+  .option.correct{border-color:var(--sat-green);background:#eaf7eb}
+  .option.correct .letter{background:var(--sat-green);color:#fff}
+  .option.wrong{border-color:var(--sat-red);background:#fdeaea}
+  .option.wrong .letter{background:var(--sat-red);color:#fff}
+  .option.disabled{cursor:default}
+  .option.disabled:hover{transform:none;background:inherit}
+  .option.selected{border-color:var(--sat-blue);background:#eaf0f9}
+  .option.selected .letter{background:var(--sat-blue);color:#fff}
+  .feedback{margin-top:14px;padding:14px 18px;border-radius:10px;font-size:14.5px;display:none;animation:slideIn .3s ease}
+  @keyframes slideIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+  .feedback.show{display:block}
+  .feedback.ok{background:#eaf7eb;border-left:4px solid var(--sat-green);color:#1f6b24}
+  .feedback.no{background:#fdeaea;border-left:4px solid var(--sat-red);color:#8b1c1c}
+  .feedback strong{display:block;margin-bottom:6px;font-size:15px}
+  .feedback .review{margin-top:8px;padding-top:8px;border-top:1px dashed rgba(0,0,0,.12);font-size:13.5px;color:var(--sat-blue);font-weight:600;}
+  .sat-hero{background:linear-gradient(135deg,var(--sat-blue) 0%,var(--sat-blue-light) 100%);color:#fff;border-radius:16px;padding:32px 36px;margin-bottom:24px;box-shadow:var(--shadow-lg);}
+  .sat-hero h2{font-size:24px;margin-bottom:8px;font-weight:800}
+  .sat-hero p{opacity:.9;font-size:14.5px;max-width:760px}
+  .sat-info-row{display:flex;gap:24px;margin-top:18px;flex-wrap:wrap}
+  .sat-info{background:rgba(255,255,255,.13);padding:10px 18px;border-radius:10px;font-size:13.5px}
+  .sat-info strong{font-size:17px;display:block;font-weight:800}
+  .btn{padding:11px 24px;border-radius:10px;border:none;font-family:inherit;font-size:14.5px;font-weight:700;cursor:pointer;transition:all .2s;letter-spacing:.3px;}
+  .btn-primary{background:var(--sat-blue);color:#fff}
+  .btn-primary:hover{background:var(--sat-blue-light);transform:translateY(-1px);box-shadow:var(--shadow-lg)}
+  .btn-primary:disabled{background:#b8c4d6;cursor:not-allowed;transform:none;box-shadow:none}
+  .btn-outline{background:#fff;color:var(--sat-blue);border:2px solid var(--sat-blue)}
+  .btn-outline:hover{background:var(--sat-blue-pale)}
+  .btn-sm{padding:7px 14px;font-size:12.5px;border-radius:8px}
+  .home-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:24px}
+  .home-card{background:#fff;border-radius:14px;padding:24px;box-shadow:var(--shadow);cursor:pointer;transition:all .25s;border:2px solid transparent;}
+  .home-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--sat-blue-light)}
+  .home-card .icon{font-size:32px;margin-bottom:10px}
+  .home-card h4{font-size:16px;color:var(--sat-blue);margin-bottom:6px}
+  .home-card p{font-size:13.5px;color:var(--sat-gray)}
+  .hero{background:linear-gradient(135deg,var(--sat-blue) 0%,var(--sat-blue-light) 100%);color:#fff;border-radius:16px;padding:36px 40px;margin-bottom:28px;box-shadow:var(--shadow-lg);position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;top:-50px;right:-50px;width:200px;height:200px;border-radius:50%;background:rgba(245,180,0,.12);}
+  .hero h1{font-size:30px;font-weight:800;margin-bottom:10px}
+  .hero p{opacity:.92;font-size:15.5px;max-width:760px;position:relative}
+  .hero-author{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.2);display:inline-flex;align-items:center;gap:14px;font-size:13.5px;position:relative;}
+  .hero-author .avatar{width:44px;height:44px;border-radius:50%;background:var(--sat-gold);color:var(--sat-blue);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:16px;flex-shrink:0;}
+  .hero-author strong{color:var(--sat-gold);font-weight:800;font-size:14.5px;display:block}
+  .hero-author span{opacity:.9}
+  footer{background:linear-gradient(135deg,#0f2547 0%,var(--sat-blue) 100%);color:#fff;padding:36px 32px 24px;margin-top:40px;}
+  .footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:32px}
+  .footer-col h4{color:var(--sat-gold);font-size:14px;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;font-weight:800}
+  .footer-col p,.footer-col li{font-size:13.5px;opacity:.88;line-height:1.8}
+  .footer-col ul{list-style:none}
+  .footer-col ul li{cursor:pointer;transition:color .2s}
+  .footer-col ul li:hover{color:var(--sat-gold)}
+  .footer-author-card{background:rgba(255,255,255,.08);border-left:4px solid var(--sat-gold);padding:16px 20px;border-radius:10px;margin-top:8px;}
+  .footer-author-card .name{font-size:16px;font-weight:800;color:#fff;margin-bottom:4px}
+  .footer-author-card .role{font-size:13px;color:var(--sat-gold);font-weight:600;margin-bottom:8px}
+  .footer-author-card .phone{font-size:14px;font-weight:700;color:#fff;display:inline-flex;align-items:center;gap:6px;background:rgba(245,180,0,.2);padding:6px 12px;border-radius:8px;}
+  .footer-bottom{max-width:1200px;margin:32px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.15);text-align:center;font-size:12.5px;opacity:.75;line-height:1.8;}
+  .footer-bottom strong{color:var(--sat-gold);font-weight:800}
+
+  .sat-set-selector{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-bottom:24px}
+  .set-card{background:#fff;border-radius:14px;padding:24px;box-shadow:var(--shadow);cursor:pointer;transition:all .25s;border:2px solid transparent;border-top:5px solid var(--sat-blue);position:relative;}
+  .set-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:var(--sat-blue-light);border-top-color:var(--sat-gold)}
+  .set-card .set-badge{display:inline-block;background:var(--sat-blue-pale);color:var(--sat-blue);padding:4px 12px;border-radius:8px;font-size:12px;font-weight:800;letter-spacing:.5px;margin-bottom:10px;}
+  .set-card h4{font-size:18px;color:var(--sat-blue);margin-bottom:8px}
+  .set-card p{font-size:13.5px;color:var(--sat-gray);margin-bottom:14px;min-height:52px}
+  .set-card .set-meta{display:flex;gap:14px;font-size:12.5px;color:var(--sat-gray);border-top:1px dashed #e2e8f0;padding-top:12px;flex-wrap:wrap}
+  .set-card .set-meta strong{color:var(--sat-blue);font-weight:800}
+  .set-card .set-start{margin-top:14px;display:inline-flex;align-items:center;gap:6px;font-weight:800;color:var(--sat-blue);font-size:14px;}
+
+  .test-topbar{background:#fff;border-radius:14px;padding:16px 22px;box-shadow:var(--shadow);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px;border:1px solid #eef2f8;position:sticky;top:140px;z-index:50;}
+  .test-set-name{font-size:16px;font-weight:800;color:var(--sat-blue)}
+  .test-progress{font-size:13px;color:var(--sat-gray);margin-top:2px}
+  .timer-wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+  .timer{font-family:'Courier New',monospace;font-size:24px;font-weight:800;background:var(--sat-blue);color:#fff;padding:8px 18px;border-radius:10px;letter-spacing:2px;min-width:110px;text-align:center;transition:background .3s;}
+  .timer.warning{background:var(--sat-yellow);animation:pulse .8s infinite}
+  .timer.danger{background:var(--sat-red);animation:pulse .5s infinite}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+  .test-layout{display:grid;grid-template-columns:230px 1fr;gap:18px;align-items:start}
+  .test-sidebar{background:#fff;border-radius:14px;padding:18px;box-shadow:var(--shadow);border:1px solid #eef2f8;position:sticky;top:220px;}
+  .test-sidebar h4{font-size:12.5px;color:var(--sat-blue);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid var(--sat-blue-pale);}
+  .nav-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  .nav-cell{aspect-ratio:1;border-radius:8px;border:2px solid #e2e8f0;background:#fff;font-family:inherit;font-weight:700;font-size:12.5px;color:var(--sat-gray);cursor:pointer;transition:all .15s;display:flex;align-items:center;justify-content:center;padding:0;}
+  .nav-cell:hover{border-color:var(--sat-blue-light)}
+  .nav-cell.answered{background:var(--sat-blue);color:#fff;border-color:var(--sat-blue)}
+  .nav-cell.current{border-color:var(--sat-gold);box-shadow:0 0 0 3px rgba(245,180,0,.3)}
+  .nav-legend{margin-top:14px;font-size:12px;color:var(--sat-gray);display:flex;flex-direction:column;gap:6px;padding-top:12px;border-top:1px dashed #e2e8f0}
+  .nav-legend > div{display:flex;align-items:center;gap:8px}
+  .legend-box{width:14px;height:14px;border-radius:4px;border:2px solid #e2e8f0;background:#fff;display:inline-block}
+  .legend-box.answered{background:var(--sat-blue);border-color:var(--sat-blue)}
+  .legend-box.current{border-color:var(--sat-gold);box-shadow:0 0 0 2px rgba(245,180,0,.3)}
+  .test-main{min-width:0}
+  .test-main .q-card{margin-bottom:14px}
+  .test-nav-btns{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .test-nav-btns .btn{min-width:140px}
+
+  .result-hero{background:linear-gradient(135deg,var(--sat-blue) 0%,var(--sat-blue-light) 100%);color:#fff;border-radius:16px;padding:32px 36px;margin-bottom:22px;box-shadow:var(--shadow-lg);display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;}
+  .result-hero h2{font-size:22px;margin-bottom:6px}
+  .result-hero p{opacity:.9;font-size:14px}
+  .result-score{text-align:center;background:rgba(255,255,255,.14);padding:18px 30px;border-radius:14px;border:2px solid rgba(245,180,0,.5);}
+  .result-score .num{font-size:42px;font-weight:800;color:var(--sat-gold);line-height:1}
+  .result-score .den{font-size:16px;opacity:.85;margin-top:4px}
+  .result-score .pct{font-size:14px;font-weight:700;margin-top:8px;padding:4px 12px;background:rgba(255,255,255,.2);border-radius:8px;display:inline-block}
+
+  .level-banner{background:#fff;border-radius:14px;padding:22px 26px;box-shadow:var(--shadow);border-left:6px solid var(--sat-blue);display:flex;gap:20px;align-items:flex-start;margin-bottom:22px;}
+  .level-icon{width:64px;height:64px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:34px;flex-shrink:0;color:#fff;}
+  .level-content{flex:1;min-width:0}
+  .level-content h3{font-size:22px;margin-bottom:8px;font-weight:800;letter-spacing:.3px}
+  .level-content p{font-size:14.5px;color:var(--sat-text);margin-bottom:6px;line-height:1.65}
+  .level-content .level-advice{background:var(--sat-blue-pale);padding:12px 16px;border-radius:8px;margin-top:10px;font-size:14px;border-left:3px solid var(--sat-blue);line-height:1.65;}
+
+  .result-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:22px}
+  .stat-box{background:#fff;border-radius:12px;padding:18px 20px;box-shadow:var(--shadow);border-left:4px solid var(--sat-blue);}
+  .stat-box.green{border-left-color:var(--sat-green)}
+  .stat-box.red{border-left-color:var(--sat-red)}
+  .stat-box.yellow{border-left-color:var(--sat-yellow)}
+  .stat-box .label{font-size:11.5px;color:var(--sat-gray);text-transform:uppercase;letter-spacing:.5px;font-weight:700}
+  .stat-box .value{font-size:26px;font-weight:800;color:var(--sat-blue);margin-top:4px;line-height:1.1}
+  .stat-box.green .value{color:var(--sat-green)}
+  .stat-box.red .value{color:var(--sat-red)}
+  .stat-box.yellow .value{color:#b8860b}
+  .stat-box .sub{font-size:12.5px;color:var(--sat-gray);margin-top:4px}
+
+  .result-section-title{font-size:18px;font-weight:800;color:var(--sat-blue);margin:28px 0 14px;display:flex;align-items:center;gap:10px;}
+  .result-section-title .icon{background:var(--sat-blue-pale);color:var(--sat-blue);width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;}
+
+  .time-analysis{background:#fff;border-radius:14px;padding:22px 26px;box-shadow:var(--shadow);margin-bottom:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;border:1px solid #eef2f8;}
+  .time-block{display:flex;gap:14px;align-items:flex-start}
+  .time-block .tb-icon{width:46px;height:46px;border-radius:11px;background:var(--sat-blue-pale);color:var(--sat-blue);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+  .time-block .tb-content{flex:1;min-width:0}
+  .time-block .tb-label{font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--sat-gray);font-weight:700;margin-bottom:4px;}
+  .time-block .tb-value{font-size:22px;font-weight:800;color:var(--sat-blue);line-height:1.1;}
+  .time-block .tb-desc{font-size:12.5px;color:var(--sat-gray);margin-top:4px;line-height:1.5;}
+
+  .topic-table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border-radius:12px;overflow:hidden;box-shadow:var(--shadow)}
+  .topic-table th,.topic-table td{padding:12px 16px;text-align:left;border-bottom:1px solid #eef2f8;vertical-align:middle}
+  .topic-table th{background:var(--sat-blue-pale);color:var(--sat-blue);font-size:12px;text-transform:uppercase;letter-spacing:.5px;font-weight:800}
+  .topic-table tr:last-child td{border-bottom:none}
+  .topic-bar{height:9px;background:#e2e8f0;border-radius:5px;overflow:hidden;min-width:100px;flex:1}
+  .topic-bar-cell{display:flex;align-items:center;gap:10px}
+  .topic-bar-fill{height:100%;background:var(--sat-green);transition:width .8s ease;border-radius:5px}
+  .topic-bar-fill.warn{background:var(--sat-yellow)}
+  .topic-bar-fill.bad{background:var(--sat-red)}
+  .topic-score{font-weight:800;color:var(--sat-blue);min-width:44px;text-align:right}
+  .topic-recommend{font-size:12.5px;color:var(--sat-gray);margin-top:6px;padding:8px 12px;background:#fafcff;border-radius:6px;border-left:2px solid var(--sat-blue-light);line-height:1.5;font-style:italic;}
+
+  .roadmap{background:#fff;border-radius:14px;padding:26px 28px;box-shadow:var(--shadow);border-left:6px solid var(--sat-gold);margin-bottom:22px;}
+  .roadmap h3{font-size:19px;color:var(--sat-blue);margin-bottom:6px;display:flex;align-items:center;gap:10px;}
+  .roadmap .roadmap-sub{font-size:13.5px;color:var(--sat-gray);margin-bottom:18px;line-height:1.6;}
+  .roadmap-phase{padding:18px 0;border-bottom:1px dashed #e2e8f0;display:flex;gap:18px;align-items:flex-start;}
+  .roadmap-phase:last-child{border-bottom:none;padding-bottom:0}
+  .roadmap-phase .phase-num{width:48px;height:48px;border-radius:12px;background:var(--sat-blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;flex-shrink:0;}
+  .roadmap-phase.phase-1 .phase-num{background:var(--sat-red)}
+  .roadmap-phase.phase-2 .phase-num{background:#E8A317}
+  .roadmap-phase.phase-3 .phase-num{background:var(--sat-green)}
+  .roadmap-phase .phase-content{flex:1;min-width:0}
+  .roadmap-phase h4{font-size:15.5px;color:var(--sat-blue);margin-bottom:8px;font-weight:800;display:flex;align-items:center;flex-wrap:wrap;gap:8px;}
+  .roadmap-phase .phase-time{display:inline-block;background:var(--sat-blue-pale);color:var(--sat-blue);font-size:11.5px;font-weight:700;padding:2px 10px;border-radius:6px;}
+  .roadmap-phase ul{padding-left:22px;margin-top:6px}
+  .roadmap-phase li{font-size:13.5px;margin-bottom:6px;color:var(--sat-text);line-height:1.6}
+  .roadmap-phase .phase-actions{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap}
+
+  .wrong-item{background:#fff;border-radius:12px;padding:20px 22px;box-shadow:var(--shadow);margin-bottom:14px;border-left:5px solid var(--sat-red);}
+  .wrong-item.unanswered{border-left-color:var(--sat-gray)}
+  .wrong-item .wrong-head{display:flex;gap:12px;align-items:flex-start;margin-bottom:12px}
+  .wrong-item .wrong-num{background:var(--sat-red);color:#fff;min-width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0;}
+  .wrong-item.unanswered .wrong-num{background:var(--sat-gray)}
+  .wrong-item .wrong-q{font-size:15px;font-weight:600;flex:1;line-height:1.55}
+  .wrong-item .topic-tag{display:inline-block;background:var(--sat-blue-pale);color:var(--sat-blue);font-size:11.5px;padding:2px 10px;border-radius:6px;font-weight:700;margin-top:6px;}
+  .wrong-item .ans-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0;font-size:14px}
+  .wrong-item .ans-box{padding:10px 14px;border-radius:8px;background:#f5f7fa;border-left:3px solid var(--sat-gray);}
+  .wrong-item .ans-box.your{background:#fdeaea;border-left-color:var(--sat-red)}
+  .wrong-item .ans-box.correct{background:#eaf7eb;border-left-color:var(--sat-green)}
+  .wrong-item .ans-box .lbl{font-size:11.5px;text-transform:uppercase;letter-spacing:.5px;color:var(--sat-gray);font-weight:700;margin-bottom:4px}
+  .wrong-item .ans-box .val{font-weight:600;color:var(--sat-text)}
+  .wrong-item .exp-box{background:var(--sat-blue-pale);padding:12px 16px;border-radius:8px;font-size:14px;border-left:3px solid var(--sat-blue);margin-top:10px;line-height:1.7}
+  .wrong-item .exp-box .lbl{font-weight:800;color:var(--sat-blue);margin-bottom:4px;font-size:13px}
+  .wrong-item .review-box{margin-top:10px;font-size:13.5px;color:var(--sat-blue);font-weight:600;padding:10px 14px;background:#fafcff;border-radius:8px;border:1px dashed var(--sat-blue-light);}
+  .result-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+
+  .priority-plan{margin-bottom:22px}
+  .priority-intro{font-size:14px;color:var(--sat-text);margin-bottom:16px;padding:14px 18px;background:linear-gradient(135deg,#fff9e6 0%,#fff3cd 100%);border-radius:10px;border-left:4px solid var(--sat-yellow);line-height:1.7}
+  .priority-card{background:#fff;border-radius:14px;padding:20px 24px;box-shadow:var(--shadow);margin-bottom:14px;border-left:5px solid var(--sat-yellow);transition:box-shadow .2s}
+  .priority-card:hover{box-shadow:var(--shadow-lg)}
+  .priority-card.high{border-left-color:var(--sat-red)}
+  .priority-card.medium{border-left-color:var(--sat-yellow)}
+  .priority-card.low{border-left-color:var(--sat-blue-light)}
+  .priority-header{display:flex;gap:14px;align-items:center;margin-bottom:14px;flex-wrap:wrap}
+  .priority-rank{width:42px;height:42px;border-radius:10px;background:var(--sat-blue);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;flex-shrink:0}
+  .priority-card.high .priority-rank{background:var(--sat-red)}
+  .priority-card.medium .priority-rank{background:#E8A317}
+  .priority-info{flex:1;min-width:0}
+  .priority-name{font-size:16.5px;font-weight:800;color:var(--sat-blue);margin-bottom:2px}
+  .priority-meta{font-size:13px;color:var(--sat-gray)}
+  .priority-badge{padding:4px 12px;border-radius:8px;font-size:12px;font-weight:800;white-space:nowrap}
+  .priority-card.high .priority-badge{background:#fdeaea;color:var(--sat-red)}
+  .priority-card.medium .priority-badge{background:#fff3cd;color:#b8860b}
+  .priority-card.low .priority-badge{background:#eaf7eb;color:#2e7d32}
+  .priority-recommend{background:var(--sat-blue-pale);padding:12px 16px;border-radius:8px;font-size:13.5px;line-height:1.6;border-left:3px solid var(--sat-blue);margin-bottom:12px}
+  .priority-steps{margin:0 0 12px;padding-left:22px;font-size:13.5px;line-height:1.7}
+  .priority-steps li{margin-bottom:4px}
+  .priority-actions{display:flex;gap:8px;flex-wrap:wrap}
+
+  .notify-overlay{position:fixed;inset:0;background:rgba(15,37,71,.65);backdrop-filter:blur(4px);z-index:9999;display:flex;align-items:center;justify-content:center;padding:20px;animation:notifyFade .3s ease}
+  @keyframes notifyFade{from{opacity:0}to{opacity:1}}
+  .notify-modal{background:#fff;border-radius:20px;max-width:580px;width:100%;max-height:92vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.35);animation:notifySlide .4s cubic-bezier(.2,.9,.3,1.2)}
+  @keyframes notifySlide{from{opacity:0;transform:translateY(40px) scale(.95)}to{opacity:1;transform:none}}
+  .notify-head{background:linear-gradient(135deg,var(--sat-blue) 0%,var(--sat-blue-light) 100%);color:#fff;padding:26px 28px 22px;border-radius:20px 20px 0 0;text-align:center;position:relative;overflow:hidden}
+  .notify-head::before{content:'';position:absolute;top:-40px;right:-40px;width:140px;height:140px;border-radius:50%;background:rgba(245,180,0,.15)}
+  .notify-head .notify-icon{font-size:52px;margin-bottom:6px;position:relative;animation:notifyPop .5s .2s both}
+  @keyframes notifyPop{0%{transform:scale(0)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+  .notify-head h2{font-size:21px;font-weight:800;margin-bottom:4px;position:relative}
+  .notify-head p{font-size:13.5px;opacity:.88;position:relative}
+  .notify-body{padding:22px 28px 6px}
+  .notify-score{text-align:center;margin-bottom:18px;padding:18px;background:linear-gradient(135deg,#f0f5ff,#e6efff);border-radius:14px;border:1px solid #dbe6f4}
+  .notify-score .big{font-size:46px;font-weight:800;color:var(--sat-blue);line-height:1;letter-spacing:-1px}
+  .notify-score .lbl{font-size:12px;color:var(--sat-gray);margin-top:6px;text-transform:uppercase;letter-spacing:1px;font-weight:700}
+  .notify-stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
+  .notify-stat{text-align:center;padding:12px 8px;border-radius:10px;background:#f5f7fa;border:1px solid #eef2f8}
+  .notify-stat.green{background:#eaf7eb;border-color:#c8e6c9}
+  .notify-stat.red{background:#fdeaea;border-color:#f8c9c9}
+  .notify-stat .num{font-size:26px;font-weight:800;line-height:1}
+  .notify-stat.green .num{color:var(--sat-green)}
+  .notify-stat.red .num{color:var(--sat-red)}
+  .notify-stat .lbl{font-size:11px;color:var(--sat-gray);margin-top:4px;text-transform:uppercase;font-weight:700;letter-spacing:.5px}
+  .notify-section{margin-bottom:16px}
+  .notify-section h4{font-size:14px;color:var(--sat-blue);margin-bottom:10px;display:flex;align-items:center;gap:6px;font-weight:800}
+  .notify-section ul{list-style:none;padding:0;margin:0}
+  .notify-section li{font-size:13px;padding:9px 13px;background:#fafcff;border-radius:8px;margin-bottom:6px;border-left:3px solid var(--sat-blue);line-height:1.5}
+  .notify-section li.err{border-left-color:var(--sat-red);background:#fef5f5}
+  .notify-section li .rec{display:block;color:var(--sat-gray);font-size:12.5px;margin-top:4px;font-style:italic}
+  .notify-actions{display:flex;gap:10px;flex-wrap:wrap;padding:8px 28px 22px}
+  .notify-actions .btn{flex:1;min-width:140px;justify-content:center}
+
+  @media(max-width:900px){
+    .test-layout{grid-template-columns:1fr}
+    .test-sidebar{position:static}
+    .nav-grid{grid-template-columns:repeat(10,1fr)}
+    .result-hero{grid-template-columns:1fr}
+  }
+  @media(max-width:640px){
+    header{padding:14px 16px}
+    .brand-title{font-size:16px}
+    .header-credit{font-size:11.5px;padding:6px 12px;text-align:left}
+    .nav-btn{padding:14px 12px;font-size:13px}
+    main{padding:20px 12px 60px}
+    .card{padding:20px 18px}
+    .sat-hero{padding:24px 20px}
+    .timer{font-size:20px;padding:6px 14px;min-width:90px}
+    .hero{padding:26px 22px}
+    .hero h1{font-size:22px}
+    .page-title{font-size:22px}
+    .footer-inner{grid-template-columns:1fr;gap:24px}
+    footer{padding:28px 18px 20px}
+    .nav-grid{grid-template-columns:repeat(6,1fr)}
+    .wrong-item .ans-row{grid-template-columns:1fr}
+    .result-score .num{font-size:34px}
+    .test-topbar{position:static}
+    .test-sidebar{position:static}
+    .level-banner{flex-direction:column;gap:14px;padding:18px}
+    .level-icon{width:52px;height:52px;font-size:28px}
+    .level-content h3{font-size:18px}
+    .roadmap{padding:20px 18px}
+    .roadmap-phase{flex-direction:column;gap:12px}
+    .time-analysis{padding:18px;grid-template-columns:1fr}
+    .priority-header{flex-direction:column;align-items:flex-start;gap:8px}
+    .notify-head{padding:22px 20px 18px}
+    .notify-body{padding:18px 20px 6px}
+    .notify-actions{padding:6px 20px 18px}
+    .notify-score .big{font-size:38px}
+    .notify-stat .num{font-size:22px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-logo">SAT</div>
+      <div>
+        <div class="brand-title">SAT Math Prep</div>
+        <div class="brand-sub">Solid Geometry — Perpendicular Relationships in Space</div>
+      </div>
+    </div>
+    <div class="header-credit">
+      Thiết kế bởi <strong>Thầy Nguyễn Hữu Trung</strong><br>
+      THPT Trần Phú • ☎ 0964 848 989
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <button class="nav-btn active" data-tab="home">🏠 Trang chủ</button>
+    <button class="nav-btn" data-tab="knowledge">📐 Kiến thức</button>
+    <button class="nav-btn" data-tab="vocab">📚 Từ vựng</button>
+    <button class="nav-btn" data-tab="practice">✏️ Luyện tập</button>
+    <button class="nav-btn" data-tab="sat">⏱️ SAT Simulation</button>
+  </div>
+</nav>
+
+<main>
+
+<section id="home" class="section active">
+  <div class="hero">
+    <h1>Chinh phục SAT Math: Solid Geometry & Perpendicularity</h1>
+    <p>Khóa ôn tập chuyên sâu chủ đề <strong>Quan hệ vuông góc trong không gian — Hình học không gian thuần túy</strong> dành cho học sinh lớp 12 chuẩn bị cho kỳ thi <strong>Digital SAT</strong>. Nội dung song ngữ Việt–Anh, từ vựng có phiên âm IPA, 30 câu trắc nghiệm có phản hồi tức thì và <strong>3 bộ SAT Simulation × 30 câu</strong> có đồng hồ, tổng kết và phân tích chi tiết.</p>
+    <div class="hero-author">
+      <div class="avatar">NT</div>
+      <div>
+        <strong>Thầy Nguyễn Hữu Trung</strong>
+        <span>Giáo viên Toán — THPT Trần Phú • ☎ 0964 848 989</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="home-grid">
+    <div class="home-card" onclick="switchTab('knowledge')">
+      <div class="icon">📐</div>
+      <h4>1. Kiến thức cơ bản</h4>
+      <p>6 mục lý thuyết song ngữ Việt — Anh: đường & mặt phẳng, quan hệ vuông góc, góc, khoảng cách, hình khối không gian, ứng dụng.</p>
+    </div>
+    <div class="home-card" onclick="switchTab('vocab')">
+      <div class="icon">📚</div>
+      <h4>2. Từ vựng chuyên ngành</h4>
+      <p>40 từ khóa SAT Math hình học không gian kèm phiên âm IPA, nghĩa tiếng Việt, ví dụ minh họa và phát âm tự động.</p>
+    </div>
+    <div class="home-card" onclick="switchTab('practice')">
+      <div class="icon">✏️</div>
+      <h4>3. Luyện tập 3 nhóm</h4>
+      <p>30 câu trắc nghiệm tiếng Anh chia 3 mức độ: Cơ bản — Trung bình — Nâng cao. Chấm điểm ngay, gợi ý ôn lại lý thuyết.</p>
+    </div>
+    <div class="home-card" onclick="switchTab('sat')">
+      <div class="icon">⏱️</div>
+      <h4>4. SAT Simulation — 3 bộ × 30 câu</h4>
+      <p>Mô phỏng Digital SAT Math với 90 câu hỏi tuyển chọn, đồng hồ 45 phút/bộ, thanh điều hướng và phân tích chi tiết sau khi nộp bài.</p>
+    </div>
+  </div>
+</section>
+
+<section id="knowledge" class="section">
+  <h2 class="page-title">📐 Kiến thức cơ bản cần nắm vững</h2>
+  <p class="page-subtitle">Song ngữ Việt — Anh · Dành cho học sinh lớp 12 chuẩn bị thi SAT Digital</p>
+
+  <div class="card">
+    <h3><span class="num">I</span> Đường thẳng và mặt phẳng trong không gian (Lines &amp; Planes)</h3>
+    <table>
+      <tr><th>Tiếng Việt</th><th>English</th></tr>
+      <tr><td>Mặt phẳng là tập hợp các điểm. Ký hiệu: \((P)\), \((Q)\), \((ABCD)\)...</td><td>A plane is a set of points. Notation: \((P)\), \((Q)\), \((ABCD)\)...</td></tr>
+      <tr><td>Đường thẳng ký hiệu: \(d, a, b, \ldots\) hoặc \(AB\).</td><td>Lines: \(d, a, b, \ldots\) or \(AB\).</td></tr>
+      <tr><td>Hai đường thẳng <strong>song song</strong>, <strong>cắt nhau</strong> hoặc <strong>chéo nhau</strong> (skew).</td><td>Two lines can be <strong>parallel</strong>, <strong>intersecting</strong>, or <strong>skew</strong>.</td></tr>
+      <tr><td>Đường thẳng \(d\) song song mặt phẳng \((P)\) nếu chúng không có điểm chung.</td><td>A line \(d\) is parallel to plane \((P)\) if they have no common point.</td></tr>
+    </table>
+    <h4>Vị trí tương đối (Relative positions):</h4>
+    <ul>
+      <li><strong>Hai đường thẳng:</strong> song song, cắt nhau, trùng nhau, hoặc chéo nhau (không đồng phẳng).</li>
+      <li><strong>Đường – mặt phẳng:</strong> nằm trong, song song, hoặc cắt nhau tại một điểm.</li>
+      <li><strong>Hai mặt phẳng:</strong> song song, trùng nhau, hoặc cắt nhau theo một giao tuyến.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">II</span> Quan hệ vuông góc (Perpendicular Relationships)</h3>
+    <h4>1. Hai đường thẳng vuông góc:</h4>
+    <div class="formula-box">
+      <strong>Định nghĩa:</strong> Hai đường thẳng \(a, b\) vuông góc nếu góc giữa chúng bằng \(90^\circ\). Ký hiệu: \(a \perp b\).<br>
+      <strong>Lưu ý:</strong> Hai đường thẳng vuông góc có thể <em>cắt nhau</em> hoặc <em>chéo nhau</em> (skew).
+    </div>
+    <div class="formula-box">
+      <strong>Vector:</strong> Nếu \(\vec{u}, \vec{v}\) là các vector chỉ phương thì \(a \perp b \iff \vec{u} \cdot \vec{v} = 0\).
+    </div>
+
+    <h4>2. Đường thẳng vuông góc với mặt phẳng:</h4>
+    <div class="formula-box">
+      <strong>Định nghĩa:</strong> \(d \perp (P)\) nếu \(d\) vuông góc với <em>mọi</em> đường thẳng nằm trong \((P)\).<br>
+      <strong>Định lý (dấu hiệu):</strong> Nếu \(d \perp a\) và \(d \perp b\), với \(a, b \subset (P)\), \(a \cap b = M\) thì \(d \perp (P)\).<br>
+      <strong>Hệ quả:</strong> Nếu \(d \perp (P)\) tại \(H\), thì \(H\) là hình chiếu vuông góc của mọi điểm trên \(d\) xuống \((P)\).
+    </div>
+
+    <h4>3. Hai mặt phẳng vuông góc:</h4>
+    <div class="formula-box">
+      <strong>Định nghĩa:</strong> \((P) \perp (Q)\) nếu góc giữa hai mặt phẳng bằng \(90^\circ\).<br>
+      <strong>Định lý:</strong> \((P) \perp (Q) \iff (P)\) chứa một đường thẳng vuông góc với \((Q)\).<br>
+      <strong>Hệ quả:</strong> Nếu \((P) \perp (Q)\) và \(a \subset (P)\), \(a \perp (P)\cap(Q)\) thì \(a \perp (Q)\).
+    </div>
+
+    <h4>4. Định lý ba đường vuông góc:</h4>
+    <div class="formula-box">
+      Cho \(d \perp (P)\), \(a \subset (P)\), \(d'\) là hình chiếu của \(d\) trên \((P)\). Khi đó: \(d' \perp a \iff d \perp a\).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">III</span> Góc và khoảng cách (Angles &amp; Distances)</h3>
+    <h4>1. Góc giữa hai đường thẳng:</h4>
+    <div class="formula-box">
+      Góc giữa \(a\) và \(b\) là góc \(\alpha \in [0^\circ; 90^\circ]\) giữa hai vector chỉ phương. Nếu \(\cos\alpha = \dfrac{|\vec{u}\cdot\vec{v}|}{|\vec{u}||\vec{v}|}\).
+    </div>
+    <h4>2. Góc giữa đường thẳng và mặt phẳng:</h4>
+    <div class="formula-box">
+      Góc giữa \(d\) và \((P)\) là góc giữa \(d\) và hình chiếu \(d'\) của nó trên \((P)\).
+    </div>
+    <h4>3. Góc giữa hai mặt phẳng:</h4>
+    <div class="formula-box">
+      Góc giữa hai mặt phẳng là góc giữa hai đường thẳng lần lượt vuông góc với giao tuyến trong hai mặt phẳng. Nếu \(\vec{n}_1, \vec{n}_2\) là các vector pháp tuyến: \(\cos\alpha = \dfrac{|\vec{n}_1 \cdot \vec{n}_2|}{|\vec{n}_1||\vec{n}_2|}\).
+    </div>
+    <h4>4. Khoảng cách:</h4>
+    <div class="formula-box">
+      \(d(M, (P)) = \dfrac{|ax_0 + by_0 + cz_0 + d|}{\sqrt{a^2 + b^2 + c^2}}\) khi \((P): ax+by+cz+d=0\), \(M(x_0, y_0, z_0)\).<br>
+      \(d(A, B) = \sqrt{(x_B-x_A)^2 + (y_B-y_A)^2 + (z_B-z_A)^2}\).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">IV</span> Hình học không gian thuần túy (Solid Geometry)</h3>
+    <table>
+      <tr><th>Hình (Solid)</th><th>Thể tích (Volume)</th><th>Diện tích bề mặt (Surface Area)</th></tr>
+      <tr><td>Cube cạnh \(a\)</td><td>\(V = a^3\)</td><td>\(S = 6a^2\)</td></tr>
+      <tr><td>Rectangular prism \(a\times b\times c\)</td><td>\(V = abc\)</td><td>\(S = 2(ab+bc+ca)\)</td></tr>
+      <tr><td>Cylinder bán kính \(r\), cao \(h\)</td><td>\(V = \pi r^2 h\)</td><td>\(S = 2\pi r(r+h)\)</td></tr>
+      <tr><td>Cone bán kính \(r\), cao \(h\), đường sinh \(\ell\)</td><td>\(V = \dfrac{1}{3}\pi r^2 h\)</td><td>\(S = \pi r(r+\ell)\)</td></tr>
+      <tr><td>Sphere bán kính \(R\)</td><td>\(V = \dfrac{4}{3}\pi R^3\)</td><td>\(S = 4\pi R^2\)</td></tr>
+      <tr><td>Pyramid: đáy \(B\), cao \(h\)</td><td>\(V = \dfrac{1}{3}Bh\)</td><td>—</td></tr>
+      <tr><td>Prism: đáy \(B\), cao \(h\)</td><td>\(V = Bh\)</td><td>—</td></tr>
+    </table>
+    <h4>Các công thức quan trọng:</h4>
+    <div class="formula-box">
+      <strong>Đường chéo không gian hình hộp:</strong> \(d = \sqrt{a^2 + b^2 + c^2}\).<br>
+      <strong>Đường chéo hình lập phương cạnh \(a\):</strong> \(d = a\sqrt{3}\).<br>
+      <strong>Tứ diện đều cạnh \(a\):</strong> \(V = \dfrac{a^3\sqrt{2}}{12}\), chiều cao \(h = \dfrac{a\sqrt{6}}{3}\).<br>
+      <strong>Chóp tứ giác đều đáy \(a\), cao \(h\):</strong> đường sinh (trung đoạn) \(\ell = \sqrt{h^2 + \dfrac{a^2}{4}}\).
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">V</span> Ứng dụng thực tế (Real-World Applications)</h3>
+    <table>
+      <tr><th>Tình huống</th><th>Dạng toán</th><th>Công thức / phương pháp</th></tr>
+      <tr><td>Tính thể tích bể nước, thùng hàng</td><td>Rectangular prism</td><td>\(V = abc\)</td></tr>
+      <tr><td>Tính lượng nước trong bồn hình trụ</td><td>Cylinder</td><td>\(V = \pi r^2 h\)</td></tr>
+      <tr><td>Chiều dài cột cờ, khoảng cách drone → điểm</td><td>3D distance</td><td>\(d = \sqrt{\Delta x^2 + \Delta y^2 + \Delta z^2}\)</td></tr>
+      <tr><td>Góc nghiêng của mái nhà, kim tự tháp</td><td>Dihedral angle</td><td>Vector pháp tuyến / hình chiếu</td></tr>
+      <tr><td>Tối ưu hoá hộp đựng trong không gian</td><td>Optimization</td><td>Đạo hàm / BĐT Cauchy</td></tr>
+      <tr><td>Thiết kế mô hình 3D, in 3D</td><td>Cross-section</td><td>Mặt phẳng cắt khối</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3><span class="num">VI</span> Ghi chú SAT Digital Math</h3>
+    <ul>
+      <li><strong>Cấu trúc:</strong> Reading &amp; Writing (64 phút / 54 câu) và Math (70 phút / 44 câu).</li>
+      <li>Chủ đề hình học không gian chủ yếu trong <strong>Geometry &amp; Trigonometry</strong> (~15% câu) và <strong>Problem Solving &amp; Data Analysis</strong>.</li>
+      <li>Được phép dùng máy tính trong toàn bộ phần Math — tận dụng để tính căn, lượng giác.</li>
+      <li>Mẹo làm bài: câu hỏi về hình khối thường yêu cầu <strong>Pythagoras 3D</strong>, <strong>thể tích</strong>, hoặc <strong>tỉ số</strong> — vẽ hình và đánh dấu các yếu tố vuông góc ngay từ đầu.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="vocab" class="section">
+  <h2 class="page-title">📚 Hệ thống từ vựng SAT Math</h2>
+  <p class="page-subtitle">40 từ khóa chuyên ngành kèm phiên âm IPA — Nhấn 🔊 để nghe phát âm</p>
+  <div class="card">
+    <input type="text" id="vocabSearch" class="vocab-search" placeholder="🔍 Tìm kiếm từ vựng (tiếng Anh hoặc tiếng Việt)...">
+    <div style="overflow-x:auto">
+      <table class="vocab-table" id="vocabTable">
+        <thead>
+          <tr><th>#</th><th>English</th><th>Phiên âm (IPA)</th><th>Nghĩa</th><th>Ví dụ</th><th></th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="practice" class="section">
+  <h2 class="page-title">✏️ Luyện tập trắc nghiệm</h2>
+  <p class="page-subtitle">30 câu hỏi tiếng Anh · Chấm điểm ngay · Gợi ý ôn lại lý thuyết nếu sai</p>
+  <div class="group-tabs">
+    <button class="group-tab active" data-group="1">🟢 Nhóm 1 — Cơ bản <span class="badge">10</span></button>
+    <button class="group-tab" data-group="2">🟡 Nhóm 2 — Trung bình <span class="badge">10</span></button>
+    <button class="group-tab" data-group="3">🔴 Nhóm 3 — Nâng cao <span class="badge">10</span></button>
+  </div>
+  <div class="group-panel active" id="panel-1"></div>
+  <div class="group-panel" id="panel-2"></div>
+  <div class="group-panel" id="panel-3"></div>
+</section>
+
+<section id="sat" class="section">
+  <h2 class="page-title">⏱️ SAT Digital Simulation</h2>
+  <p class="page-subtitle">3 bộ đề × 30 câu — Mô phỏng cấu trúc Digital SAT Math · Đồng hồ 45 phút · Tổng kết &amp; phân tích chi tiết</p>
+
+  <div class="sat-hero">
+    <h2>📘 Digital SAT Math — Solid Geometry &amp; Perpendicularity</h2>
+    <p>Mỗi bộ gồm <strong>30 câu hỏi tuyển chọn</strong>, thời gian <strong>45 phút</strong> (90 giây/câu). Sau khi nộp bài, bạn sẽ nhận <strong>bảng tổng kết điểm</strong>, <strong>đánh giá năng lực</strong>, <strong>lộ trình ôn tập cá nhân hóa</strong> và <strong>phân tích chi tiết từng câu sai</strong>.</p>
+    <div class="sat-info-row">
+      <div class="sat-info"><strong>90</strong>Câu hỏi (3 bộ)</div>
+      <div class="sat-info"><strong>45:00</strong>Mỗi bộ</div>
+      <div class="sat-info"><strong>Calculator</strong>Allowed</div>
+      <div class="sat-info"><strong>A–D</strong>4 lựa chọn</div>
+    </div>
+  </div>
+
+  <div id="satSetSelector" class="sat-set-selector"></div>
+
+  <div id="satTestScreen" style="display:none">
+    <div class="test-topbar">
+      <div>
+        <div class="test-set-name" id="testSetName">Bộ 1</div>
+        <div class="test-progress" id="testProgress">Câu 1 / 30 · Đã trả lời 0/30</div>
+      </div>
+      <div class="timer-wrap">
+        <div class="timer" id="testTimer">45:00</div>
+        <button class="btn btn-primary" id="btnSubmitTest">📝 Nộp bài</button>
+        <button class="btn btn-outline" id="btnQuitTest">✕ Thoát</button>
+      </div>
+    </div>
+    <div class="test-layout">
+      <aside class="test-sidebar">
+        <h4>Bảng câu hỏi</h4>
+        <div class="nav-grid" id="navGrid"></div>
+        <div class="nav-legend">
+          <div><span class="legend-box current"></span> Câu đang xem</div>
+          <div><span class="legend-box answered"></span> Đã trả lời</div>
+          <div><span class="legend-box"></span> Chưa trả lời</div>
+        </div>
+      </aside>
+      <div class="test-main">
+        <div class="q-card" id="testQuestionCard">
+          <div class="q-head">
+            <div class="q-num" id="testQNum">1</div>
+            <div class="q-text" id="testQText"></div>
+          </div>
+          <div class="options" id="testOptions"></div>
+        </div>
+        <div class="test-nav-btns">
+          <button class="btn btn-outline" id="btnPrev">← Câu trước</button>
+          <button class="btn btn-primary" id="btnNext">Câu tiếp →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="satResultScreen" style="display:none"></div>
+</section>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>📘 Về khóa học</h4>
+      <p>Web ôn thi SAT Math chuyên đề <strong>Solid Geometry — Perpendicular Relationships in Space</strong> — Quan hệ vuông góc và hình học không gian thuần túy. Nội dung song ngữ Việt–Anh, phù hợp học sinh lớp 12 chuẩn bị cho kỳ thi Digital SAT.</p>
+      <div class="footer-author-card">
+        <div class="name">👨‍🏫 Thầy Nguyễn Hữu Trung</div>
+        <div class="role">Giáo viên Toán — THPT Trần Phú</div>
+        <div class="phone">📞 0964 848 989</div>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>🧭 Điều hướng</h4>
+      <ul>
+        <li onclick="switchTab('home')">🏠 Trang chủ</li>
+        <li onclick="switchTab('knowledge')">📐 Kiến thức cơ bản</li>
+        <li onclick="switchTab('vocab')">📚 Từ vựng SAT Math</li>
+        <li onclick="switchTab('practice')">✏️ Luyện tập 3 nhóm</li>
+        <li onclick="switchTab('sat')">⏱️ SAT Simulation</li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>📞 Liên hệ</h4>
+      <ul>
+        <li>👤 <strong>Thầy Nguyễn Hữu Trung</strong></li>
+        <li>🏫 THPT Trần Phú</li>
+        <li>☎️ 0964 848 989</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 <strong>Thầy Nguyễn Hữu Trung — THPT Trần Phú</strong> · Thiết kế web ôn thi SAT Math chuyên đề Solid Geometry &amp; Perpendicularity</p>
+    <p style="margin-top:6px">Made with ❤️ for Grade 12 students preparing for the Digital SAT</p>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   TAB SWITCHING
+============================================================ */
+function switchTab(tab){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById(tab).classList.add('active');
+  document.querySelector(`.nav-btn[data-tab="${tab}"]`).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('.nav-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>switchTab(btn.dataset.tab));
+});
+
+function showScreen(name){
+  const screens = {
+    selector: document.getElementById('satSetSelector'),
+    test:     document.getElementById('satTestScreen'),
+    result:   document.getElementById('satResultScreen')
+  };
+  Object.entries(screens).forEach(([key, el]) => {
+    if(!el) return;
+    if(key === name){
+      el.style.display = (key === 'selector') ? 'grid' : 'block';
+    } else {
+      el.style.display = 'none';
+    }
+  });
+}
+
+/* ============================================================
+   SOUND
+============================================================ */
+let audioCtx=null;
+function getCtx(){
+  if(!audioCtx) audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+  if(audioCtx.state==='suspended') audioCtx.resume();
+  return audioCtx;
+}
+function playDing(){try{const ctx=getCtx();[880,1320].forEach((f,i)=>{const osc=ctx.createOscillator(),g=ctx.createGain();osc.connect(g);g.connect(ctx.destination);osc.type='sine';osc.frequency.setValueAtTime(f,ctx.currentTime+i*0.08);g.gain.setValueAtTime(0.18,ctx.currentTime+i*0.08);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+i*0.08+0.35);osc.start(ctx.currentTime+i*0.08);osc.stop(ctx.currentTime+i*0.08+0.4);});}catch(e){}}
+function playBuzz(){try{const ctx=getCtx();const osc=ctx.createOscillator(),g=ctx.createGain();osc.connect(g);g.connect(ctx.destination);osc.type='sawtooth';osc.frequency.setValueAtTime(180,ctx.currentTime);osc.frequency.exponentialRampToValueAtTime(90,ctx.currentTime+0.3);g.gain.setValueAtTime(0.15,ctx.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.35);osc.start(ctx.currentTime);osc.stop(ctx.currentTime+0.4);}catch(e){}}
+function playFanfare(){try{const ctx=getCtx();[523,659,784,1046].forEach((f,i)=>{const osc=ctx.createOscillator(),g=ctx.createGain();osc.connect(g);g.connect(ctx.destination);osc.type='sine';osc.frequency.setValueAtTime(f,ctx.currentTime+i*0.12);g.gain.setValueAtTime(0.2,ctx.currentTime+i*0.12);g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+i*0.12+0.5);osc.start(ctx.currentTime+i*0.12);osc.stop(ctx.currentTime+i*0.12+0.6);});}catch(e){}}
+
+/* ============================================================
+   VOCABULARY
+============================================================ */
+const vocab=[
+  ["Perpendicular","/ˌpɜːrpənˈdɪkjələr/","Vuông góc","The two lines are perpendicular."],
+  ["Parallel","/ˈpærəlel/","Song song","Two parallel lines never meet."],
+  ["Plane","/pleɪn/","Mặt phẳng","Points lie on the same plane."],
+  ["Line","/laɪn/","Đường thẳng","A straight line in space."],
+  ["Point","/pɔɪnt/","Điểm","A point has no dimension."],
+  ["Intersect","/ˌɪntərˈsekt/","Cắt nhau","The lines intersect at one point."],
+  ["Skew lines","/skjuː laɪnz/","Hai đường chéo nhau","Skew lines are not coplanar."],
+  ["Coplanar","/koʊˈpleɪnər/","Đồng phẳng","Three points are always coplanar."],
+  ["Right angle","/raɪt ˈæŋɡl/","Góc vuông","The angle is \\(90^\\circ\\)."],
+  ["Projection","/prəˈdʒekʃn/","Hình chiếu","The projection of \\(A\\) onto the plane."],
+  ["Orthogonal","/ɔːrˈθɑːɡənl/","Trực giao","Orthogonal vectors have zero dot product."],
+  ["Distance","/ˈdɪstəns/","Khoảng cách","The distance from point to plane."],
+  ["Segment","/ˈseɡmənt/","Đoạn thẳng","A segment between two points."],
+  ["Vertex","/ˈvɜːrteks/","Đỉnh","A cube has 8 vertices."],
+  ["Edge","/edʒ/","Cạnh","A cube has 12 edges."],
+  ["Face","/feɪs/","Mặt","A cube has 6 faces."],
+  ["Base","/beɪs/","Đáy","The base of the pyramid is a square."],
+  ["Height","/haɪt/","Chiều cao","The height of the prism."],
+  ["Altitude","/ˈæltɪtuːd/","Đường cao","The altitude of a triangle."],
+  ["Diagonal","/daɪˈæɡənl/","Đường chéo","The diagonal of a square."],
+  ["Cube","/kjuːb/","Hình lập phương","Volume of a cube is \\(a^3\\)."],
+  ["Rectangular prism","/rekˈtæŋɡjələr prɪzəm/","Hình hộp chữ nhật","Volume = \\(abc\\)."],
+  ["Tetrahedron","/ˌtetrəˈhiːdrən/","Tứ diện","A regular tetrahedron has 4 faces."],
+  ["Pyramid","/ˈpɪrəmɪd/","Hình chóp","The pyramid has a square base."],
+  ["Prism","/ˈprɪzəm/","Lăng trụ","Volume of prism = base area × height."],
+  ["Cylinder","/ˈsɪlɪndər/","Hình trụ","Volume = \\(\\pi r^2 h\\)."],
+  ["Cone","/koʊn/","Hình nón","Volume = \\(\\frac{1}{3}\\pi r^2 h\\)."],
+  ["Sphere","/sfɪr/","Hình cầu","Volume = \\(\\frac{4}{3}\\pi R^3\\)."],
+  ["Volume","/ˈvɑːljuːm/","Thể tích","Calculate the volume of the solid."],
+  ["Surface area","/ˈsɜːrfɪs ˈeriə/","Diện tích bề mặt","Surface area of a sphere."],
+  ["Cross-section","/krɔːs ˈsekʃn/","Thiết diện","A cross-section of the cube."],
+  ["Dihedral angle","/daɪˈhiːdrəl ˈæŋɡl/","Góc nhị diện","Angle between two planes."],
+  ["Median","/ˈmiːdiən/","Trung tuyến","A median of a triangle."],
+  ["Centroid","/ˈsentrɔɪd/","Trọng tâm","The centroid of a triangle."],
+  ["Inscribed","/ɪnˈskraɪbd/","Nội tiếp","An inscribed sphere."],
+  ["Circumscribed","/ˈsɜːrkəmskraɪbd/","Ngoại tiếp","A circumscribed sphere."],
+  ["Slant height","/slænt haɪt/","Đường sinh","The slant height of a cone."],
+  ["Perpendicular bisector","/ˌpɜːrpənˈdɪkjələr ˈbaɪsektər/","Trung trực","The perpendicular bisector of a segment."],
+  ["Solid","/ˈsɑːlɪd/","Hình khối","A solid has volume."],
+  ["Right triangle","/raɪt ˈtraɪæŋɡl/","Tam giác vuông","Use the Pythagorean theorem."]
+];
+function renderVocab(filter=""){
+  const tbody=document.querySelector('#vocabTable tbody');
+  tbody.innerHTML='';
+  const f=filter.toLowerCase().trim();
+  vocab.forEach((v,i)=>{
+    if(f && !(v[0].toLowerCase().includes(f)||v[2].toLowerCase().includes(f))) return;
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${i+1}</td><td>${v[0]}</td><td>${v[1]}</td><td>${v[2]}</td><td>${v[3]}</td>
+      <td><button class="speak-btn" data-word="${v[0]}" title="Phát âm">🔊</button></td>`;
+    tbody.appendChild(tr);
+  });
+  if(window.renderMathInElement){renderMathInElement(tbody,{delimiters:[{left:'\\(',right:'\\)',display:false}]});}
+}
+document.getElementById('vocabSearch').addEventListener('input',e=>renderVocab(e.target.value));
+document.addEventListener('click',e=>{
+  if(e.target.classList.contains('speak-btn')){
+    const word=e.target.dataset.word;
+    if('speechSynthesis' in window){speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(word);u.lang='en-US';u.rate=0.9;speechSynthesis.speak(u);}
+  }
+});
+renderVocab();
+
+/* ============================================================
+   PRACTICE
+============================================================ */
+const practiceData={
+  1:[
+    {q:"How many edges of a cube are perpendicular to a given edge?",opts:["\\(2\\)","\\(3\\)","\\(4\\)","\\(6\\)"],ans:2,exp:"Each edge has 4 edges meeting it at endpoints (perpendicular). The other 3 are parallel, 4 are skew.",review:"Ôn lại mục II — Quan hệ vuông góc"},
+    {q:"What is the volume of a cube with side length \\(4\\)?",opts:["\\(16\\)","\\(32\\)","\\(64\\)","\\(128\\)"],ans:2,exp:"\\(V = a^3 = 4^3 = 64\\).",review:"Ôn lại mục IV — Thể tích hình lập phương"},
+    {q:"In a rectangular box \\(2\\times 3\\times 6\\), what is the length of the space diagonal?",opts:["\\(7\\)","\\(\\sqrt{41}\\)","\\(\\sqrt{51}\\)","\\(11\\)"],ans:0,exp:"\\(d = \\sqrt{2^2+3^2+6^2} = \\sqrt{49} = 7\\).",review:"Ôn lại mục IV — Đường chéo hình hộp"},
+    {q:"A line \\(d\\) is perpendicular to plane \\((P)\\) when:",opts:["\\(d\\) is parallel to one line in \\((P)\\)","\\(d\\) is perpendicular to one line in \\((P)\\)","\\(d\\) is perpendicular to two intersecting lines in \\((P)\\)","\\(d\\) intersects \\((P)\\) at one point"],ans:2,exp:"Theorem: if a line is perpendicular to two intersecting lines in a plane, it is perpendicular to the plane.",review:"Ôn lại mục II — Định lý dấu hiệu vuông góc"},
+    {q:"How many vertices does a tetrahedron have?",opts:["\\(3\\)","\\(4\\)","\\(5\\)","\\(6\\)"],ans:1,exp:"A tetrahedron has 4 vertices, 6 edges, and 4 triangular faces.",review:"Ôn lại mục IV — Hình khối không gian"},
+    {q:"The volume of a regular tetrahedron with edge length \\(a\\) is:",opts:["\\(\\dfrac{a^3}{6}\\)","\\(\\dfrac{a^3\\sqrt{2}}{12}\\)","\\(\\dfrac{a^3\\sqrt{3}}{12}\\)","\\(\\dfrac{a^3}{12}\\)"],ans:1,exp:"\\(V = \\dfrac{a^3\\sqrt{2}}{12}\\).",review:"Ôn lại mục IV — Tứ diện đều"},
+    {q:"What is the distance between points \\(A(0,0,0)\\) and \\(B(1,2,2)\\)?",opts:["\\(3\\)","\\(\\sqrt{5}\\)","\\(\\sqrt{7}\\)","\\(5\\)"],ans:0,exp:"\\(AB = \\sqrt{1^2+2^2+2^2} = 3\\).",review:"Ôn lại mục III — Khoảng cách"},
+    {q:"In a cube, the angle between two adjacent edges is:",opts:["\\(30^\\circ\\)","\\(45^\\circ\\)","\\(60^\\circ\\)","\\(90^\\circ\\)"],ans:3,exp:"Adjacent edges of a cube are perpendicular: \\(90^\\circ\\).",review:"Ôn lại mục II — Hai đường vuông góc"},
+    {q:"The surface area of a cube with edge length \\(5\\) is:",opts:["\\(25\\)","\\(125\\)","\\(150\\)","\\(250\\)"],ans:2,exp:"\\(S = 6a^2 = 6(25) = 150\\).",review:"Ôn lại mục IV — Diện tích bề mặt"},
+    {q:"Two lines in space are perpendicular if:",opts:["They intersect at \\(90^\\circ\\)","They are parallel","The angle between them is \\(90^\\circ\\)","They do not intersect"],ans:2,exp:"Perpendicular lines can be intersecting OR skew; the angle between them is \\(90^\\circ\\).",review:"Ôn lại mục II — Định nghĩa vuông góc"}
+  ],
+  2:[
+    {q:"In a cube with edge \\(2\\), find the angle between the space diagonal and the base.",opts:["\\(\\arctan(1/\\sqrt{2})\\)","\\(\\arctan(1/2)\\)","\\(\\arctan(2)\\)","\\(\\arctan(\\sqrt{2})\\)"],ans:0,exp:"Height \\(= 2\\), projection \\(= 2\\sqrt{2}\\), so \\(\\tan\\theta = 2/(2\\sqrt{2}) = 1/\\sqrt{2}\\).",review:"Ôn lại mục III — Góc giữa đường và mặt"},
+    {q:"A rectangular prism has dimensions \\(2\\times 3\\times h\\). If its volume is \\(24\\), find \\(h\\).",opts:["\\(2\\)","\\(3\\)","\\(4\\)","\\(6\\)"],ans:2,exp:"\\(2 \\cdot 3 \\cdot h = 24 \\Rightarrow h = 4\\).",review:"Ôn lại mục IV — Thể tích hình hộp"},
+    {q:"Angle between two face diagonals of a cube sharing a vertex:",opts:["\\(30^\\circ\\)","\\(45^\\circ\\)","\\(60^\\circ\\)","\\(90^\\circ\\)"],ans:2,exp:"Using vectors: \\((1,1,0)\\cdot(1,0,1)=1\\), \\(\\cos\\theta = 1/2 \\Rightarrow \\theta = 60^\\circ\\).",review:"Ôn lại mục III — Góc giữa hai đường"},
+    {q:"Distance from a vertex to opposite face in a regular tetrahedron with edge \\(a\\):",opts:["\\(\\dfrac{a\\sqrt{3}}{2}\\)","\\(\\dfrac{a\\sqrt{6}}{3}\\)","\\(\\dfrac{a\\sqrt{2}}{2}\\)","\\(a\\sqrt{3}\\)"],ans:1,exp:"Height of regular tetrahedron: \\(h = \\dfrac{a\\sqrt{6}}{3}\\).",review:"Ôn lại mục IV — Tứ diện đều"},
+    {q:"Square pyramid with base side \\(a\\) and height \\(h\\). The slant height is:",opts:["\\(\\sqrt{h^2 + a^2}\\)","\\(\\sqrt{h^2 + a^2/4}\\)","\\(\\sqrt{h^2 - a^2/4}\\)","\\(\\sqrt{h^2 + a^2/2}\\)"],ans:1,exp:"\\(\\ell = \\sqrt{h^2 + (a/2)^2} = \\sqrt{h^2 + a^2/4}\\).",review:"Ôn lại mục IV — Hình chóp đều"},
+    {q:"Distance between opposite edges in a regular tetrahedron with edge \\(a\\):",opts:["\\(\\dfrac{a}{2}\\)","\\(\\dfrac{a\\sqrt{2}}{2}\\)","\\(\\dfrac{a\\sqrt{3}}{2}\\)","\\(a\\)"],ans:1,exp:"The distance between two opposite (skew) edges of a regular tetrahedron is \\(a\\sqrt{2}/2\\).",review:"Ôn lại mục III — Khoảng cách"},
+    {q:"Volume of a square pyramid with base side \\(4\\) and height \\(3\\):",opts:["\\(12\\)","\\(16\\)","\\(24\\)","\\(48\\)"],ans:1,exp:"\\(V = \\dfrac{1}{3} \\cdot 4^2 \\cdot 3 = 16\\).",review:"Ôn lại mục IV — Thể tích hình chóp"},
+    {q:"Are vectors \\(\\vec{u}=(1,0,1)\\) and \\(\\vec{v}=(1,1,-1)\\) perpendicular?",opts:["Yes, because \\(\\vec{u}\\cdot\\vec{v}=0\\)","No, they are parallel","Yes, because their magnitudes are equal","No, they have different directions"],ans:0,exp:"\\(\\vec{u}\\cdot\\vec{v} = 1\\cdot 1 + 0\\cdot 1 + 1\\cdot(-1) = 0\\).",review:"Ôn lại mục II — Điều kiện vector vuông góc"},
+    {q:"The plane through \\((1,0,0), (0,1,0), (0,0,1)\\) cuts the unit cube in:",opts:["A square","An equilateral triangle","A rectangle","A regular hexagon"],ans:1,exp:"The plane \\(x+y+z=1\\) cuts the cube in an equilateral triangle with side \\(\\sqrt{2}\\).",review:"Ôn lại mục IV — Thiết diện"},
+    {q:"Distance between parallel planes \\(x+y+z=1\\) and \\(x+y+z=3\\):",opts:["\\(1\\)","\\(\\dfrac{2}{\\sqrt{3}}\\)","\\(\\sqrt{2}\\)","\\(2\\)"],ans:1,exp:"\\(d = \\dfrac{|3-1|}{\\sqrt{1^2+1^2+1^2}} = \\dfrac{2}{\\sqrt{3}} = \\dfrac{2\\sqrt{3}}{3}\\).",review:"Ôn lại mục III — Khoảng cách giữa hai mặt phẳng"}
+  ],
+  3:[
+    {q:"Regular tetrahedron \\(ABCD\\) with edge \\(a\\). The angle between edge \\(AD\\) and plane \\((BCD)\\) is:",opts:["\\(\\arccos(1/3)\\)","\\(\\arccos(\\sqrt{3}/3)\\)","\\(\\arccos(1/2)\\)","\\(\\arccos(\\sqrt{2}/2)\\)"],ans:1,exp:"\\(\\cos\\theta = \\dfrac{DG}{AD} = \\dfrac{a\\sqrt{3}/3}{a} = \\dfrac{\\sqrt{3}}{3}\\).",review:"Ôn lại mục III — Góc đường và mặt"},
+    {q:"Cube with side \\(2\\). Angle between the space diagonal and a face diagonal:",opts:["\\(\\arccos(\\sqrt{3}/3)\\)","\\(\\arccos(\\sqrt{6}/3)\\)","\\(\\arccos(1/3)\\)","\\(\\arccos(1/2)\\)"],ans:1,exp:"\\((1,1,1)\\cdot(1,1,0)=2\\), \\(\\cos\\theta = \\dfrac{2}{\\sqrt{3}\\cdot\\sqrt{2}} = \\dfrac{\\sqrt{6}}{3}\\).",review:"Ôn lại mục III — Góc giữa hai đường"},
+    {q:"Cube with side \\(2\\), distance between lines \\(AA'\\) and \\(BD\\) (where \\(BD\\) is a diagonal of the base):",opts:["\\(1\\)","\\(\\sqrt{2}\\)","\\(2\\)","\\(\\sqrt{3}\\)"],ans:1,exp:"Projection of \\(AA'\\) onto base is \\(A\\). Distance from \\(A\\) to \\(BD\\) in square side 2 is \\(\\sqrt{2}\\).",review:"Ôn lại mục III — Khoảng cách"},
+    {q:"Maximum volume of a rectangular box inscribed in a sphere of radius \\(R\\):",opts:["\\(4R^3\\)","\\(\\dfrac{8R^3}{3\\sqrt{3}}\\)","\\(\\dfrac{4R^3}{3}\\)","\\(6R^3\\)"],ans:1,exp:"Cube inscribed: side \\(\\dfrac{2R}{\\sqrt{3}}\\), volume \\(\\dfrac{8R^3}{3\\sqrt{3}}\\).",review:"Ôn lại mục V — Tối ưu hóa"},
+    {q:"Square pyramid base side \\(4\\), side edge \\(5\\). Its height is:",opts:["\\(3\\)","\\(\\sqrt{17}\\)","\\(\\sqrt{21}\\)","\\(4\\)"],ans:1,exp:"Half diagonal of base \\(= 2\\sqrt{2}\\). \\(h^2 = 25 - 8 = 17\\), \\(h = \\sqrt{17}\\).",review:"Ôn lại mục IV — Hình chóp đều"},
+    {q:"Tetrahedron \\(ABCD\\) with \\(AB \\perp AC\\), \\(AB \\perp AD\\), \\(AC \\perp AD\\). \\(AB=2\\), \\(AC=3\\), \\(AD=6\\). Then \\(BC =\\)",opts:["\\(\\sqrt{13}\\)","\\(\\sqrt{5}\\)","\\(\\sqrt{40}\\)","\\(7\\)"],ans:0,exp:"\\(BC^2 = AB^2 + AC^2 = 4+9 = 13\\), so \\(BC = \\sqrt{13}\\).",review:"Ôn lại mục II — Ba đường vuông góc từng đôi"},
+    {q:"Cube with edge \\(a\\). Angle between \\(AB'\\) and \\(A'C'\\):",opts:["\\(30^\\circ\\)","\\(45^\\circ\\)","\\(60^\\circ\\)","\\(90^\\circ\\)"],ans:2,exp:"\\(\\vec{AB'}=(a,0,a)\\), \\(\\vec{A'C'}=(a,a,0)\\). \\(\\cos\\theta = \\dfrac{a^2}{2a^2} = \\dfrac{1}{2} \\Rightarrow \\theta = 60^\\circ\\).",review:"Ôn lại mục III — Góc giữa hai đường"},
+    {q:"Pyramid \\(S.ABC\\) with \\(SA \\perp (ABC)\\), \\(\\triangle ABC\\) right at \\(B\\), \\(AB=3\\), \\(BC=4\\), \\(SA=5\\). Then \\(SC =\\)",opts:["\\(5\\)","\\(\\sqrt{50}\\)","\\(7\\)","\\(\\sqrt{75}\\)"],ans:1,exp:"\\(AC = 5\\). \\(SC^2 = SA^2 + AC^2 = 25 + 25 = 50 \\Rightarrow SC = \\sqrt{50} = 5\\sqrt{2}\\).",review:"Ôn lại mục II — Đường vuông góc mặt phẳng"},
+    {q:"Plane \\(x+y+z=1\\). Angle between this plane and the \\(xy\\)-plane:",opts:["\\(\\arccos(1/\\sqrt{3})\\)","\\(\\arccos(1/2)\\)","\\(\\arccos(1/3)\\)","\\(30^\\circ\\)"],ans:0,exp:"Normals \\((1,1,1)\\) and \\((0,0,1)\\). \\(\\cos\\theta = \\dfrac{1}{\\sqrt{3}}\\).",review:"Ôn lại mục III — Góc giữa hai mặt phẳng"},
+    {q:"Cube with edge \\(a\\). Distance from vertex \\(A\\) to plane through \\(B, D, A'\\):",opts:["\\(\\dfrac{a}{2}\\)","\\(\\dfrac{a\\sqrt{3}}{3}\\)","\\(\\dfrac{a\\sqrt{2}}{2}\\)","\\(\\dfrac{a\\sqrt{6}}{3}\\)"],ans:1,exp:"Plane: \\(x+y+z=a\\). Distance from origin \\(= \\dfrac{a}{\\sqrt{3}} = \\dfrac{a\\sqrt{3}}{3}\\).",review:"Ôn lại mục III — Khoảng cách từ điểm đến mặt phẳng"}
+  ]
+};
+
+const letterMap=['A','B','C','D'];
+const practiceState={1:{},2:{},3:{}};
+
+function renderPractice(group){
+  const container=document.getElementById('panel-'+group);
+  container.innerHTML='';
+  practiceData[group].forEach((item,idx)=>{
+    const card=document.createElement('div');
+    card.className='q-card';card.id=`g${group}q${idx}`;
+    let optsHtml='';
+    item.opts.forEach((o,i)=>{optsHtml+=`<button class="option" data-group="${group}" data-q="${idx}" data-opt="${i}"><span class="letter">${letterMap[i]}</span><span class="opt-text">${o}</span></button>`;});
+    card.innerHTML=`<div class="q-head"><div class="q-num">${idx+1}</div><div class="q-text">${item.q}</div></div><div class="options">${optsHtml}</div><div class="feedback" id="fb-${group}-${idx}"></div>`;
+    container.appendChild(card);
+  });
+  if(window.renderMathInElement){renderMathInElement(container,{delimiters:[{left:'\\(',right:'\\)',display:false}]});}
+}
+document.querySelectorAll('.group-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.group-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.group-panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-'+tab.dataset.group).classList.add('active');
+  });
+});
+[1,2,3].forEach(renderPractice);
+
+document.addEventListener('click',e=>{
+  const btn=e.target.closest('.option');
+  if(!btn||btn.classList.contains('disabled')) return;
+  const group=btn.dataset.group;if(!group) return;
+  const qIdx=+btn.dataset.q, optIdx=+btn.dataset.opt;
+  const card=document.getElementById(`g${group}q${qIdx}`);
+  const item=practiceData[group][qIdx];
+  const fb=document.getElementById(`fb-${group}-${qIdx}`);
+  const allOpts=card.querySelectorAll('.option');
+  allOpts.forEach(o=>o.classList.add('disabled'));
+  allOpts[item.ans].classList.add('correct');
+  const isCorrect=optIdx===item.ans;
+  if(!isCorrect){btn.classList.add('wrong');}
+  card.classList.add(isCorrect?'correct':'wrong');
+  if(practiceState[group][qIdx]===undefined) practiceState[group][qIdx]=isCorrect;
+  fb.className='feedback show '+(isCorrect?'ok':'no');
+  if(isCorrect){fb.innerHTML=`<strong>✅ Correct!</strong>${item.exp}<div class="review">💡 ${item.review}</div>`;playDing();}
+  else{fb.innerHTML=`<strong>❌ Incorrect. Correct answer: ${letterMap[item.ans]}</strong>${item.exp}<div class="review">📖 Ôn tập lại: ${item.review}</div>`;playBuzz();}
+});
+
+/* ============================================================
+   SAT SIMULATION DATA
+============================================================ */
+const TOPICS = {
+  LP:   "Đường & mặt phẳng",
+  PERP: "Quan hệ vuông góc",
+  ANGLE:"Góc trong không gian",
+  DIST: "Khoảng cách",
+  SOLID:"Hình khối không gian",
+  APP:  "Ứng dụng thực tế"
+};
+
+const TOPIC_RECOMMENDATIONS = {
+  LP: "Nắm vững vị trí tương đối của đường và mặt phẳng trong không gian, cách xác định giao tuyến, và điều kiện song song.",
+  PERP: "Học kỹ 2 định lý vuông góc: (1) đường thẳng vuông góc mặt phẳng khi vuông góc 2 đường cắt nhau; (2) hai mặt phẳng vuông góc khi mặt này chứa đường vuông góc mặt kia.",
+  ANGLE: "Góc giữa đường và mặt = góc giữa đường và hình chiếu. Góc giữa hai mặt = góc giữa hai đường vuông góc giao tuyến. Dùng vector pháp tuyến để tính nhanh.",
+  DIST: "Nhớ công thức khoảng cách điểm–mặt phẳng, điểm–đường, và phương pháp tìm đoạn vuông góc chung cho hai đường chéo nhau.",
+  SOLID: "Ghi nhớ bảng công thức thể tích và diện tích: hình lập phương, hộp chữ nhật, trụ, nón, cầu, chóp, lăng trụ. Chú ý hệ số 1/3 cho chóp và nón.",
+  APP: "Phân biệt bài toán thể tích (V), diện tích bề mặt (S), khoảng cách thực tế. Đọc kỹ đơn vị và làm tròn theo yêu cầu đề."
+};
+
+const PRIORITY_STEPS = {
+  LP: [
+    "Vẽ hình và xác định rõ đường nào nằm trong mặt nào, giao tuyến nếu có.",
+    "Nắm 3 vị trí tương đối: song song (không điểm chung), cắt nhau (1 điểm), chứa nhau.",
+    "Luyện bài tập xác định giao tuyến của hai mặt phẳng."
+  ],
+  PERP: [
+    "Viết ra giấy 2 định lý: (1) d ⊥ (P) nếu d ⊥ 2 đường cắt nhau trong (P); (2) (P) ⊥ (Q) nếu (P) chứa đường ⊥ (Q).",
+    "Luyện chứng minh vuông góc: tìm 2 đường cắt nhau trong mặt phẳng mà đường kia vuông góc.",
+    "Điều kiện vector: u·v = 0 là công cụ kiểm tra nhanh."
+  ],
+  ANGLE: [
+    "Góc giữa đường và mặt: xác định hình chiếu vuông góc của đường lên mặt phẳng.",
+    "Góc giữa hai mặt: xác định giao tuyến, dựng 2 đường vuông góc giao tuyến trong 2 mặt.",
+    "Công thức vector: cos α = |u·v| / (|u||v|) cho cả 2 trường hợp."
+  ],
+  DIST: [
+    "Khoảng cách điểm–mặt phẳng: d = |ax₀+by₀+cz₀+d| / √(a²+b²+c²).",
+    "Khoảng cách hai đường chéo nhau: dùng đoạn vuông góc chung hoặc công thức |(AB)·(u×v)| / |u×v|.",
+    "Với hình chóp, khoảng cách từ đỉnh đến đáy thường là đường cao."
+  ],
+  SOLID: [
+    "Lập bảng công thức: lập phương a³, hộp abc, trụ πr²h, nón πr²h/3, cầu 4πR³/3, chóp Bh/3.",
+    "Chú ý đơn vị: cm³, m³,... và đổi đơn vị khi cần.",
+    "Tứ diện đều cạnh a: V = a³√2/12, h = a√6/3."
+  ],
+  APP: [
+    "Xác định đại lượng cần tìm (V, S, d) từ đề bài.",
+    "Vẽ hình, ghi kích thước đã cho, tìm mối liên hệ với công thức.",
+    "Kiểm tra đơn vị và làm tròn theo yêu cầu."
+  ]
+};
+
+const SAT_SETS = {
+  1: {
+    name: "Bộ 1 — Foundations",
+    desc: "Kiến thức nền tảng: thể tích, diện tích, khoảng cách 3D, nhận dạng quan hệ vuông góc cơ bản.",
+    questions: [
+      {q:"What is the volume of a cube with edge length 3?",opts:["\\(9\\)","\\(27\\)","\\(54\\)","\\(81\\)"],ans:1,topic:"SOLID",exp:"\\(V = a^3 = 3^3 = 27\\).",review:"Ôn lại mục IV — Thể tích hình lập phương"},
+      {q:"What is the distance from the origin to point \\((1, 2, 2)\\)?",opts:["\\(\\sqrt{5}\\)","\\(\\sqrt{7}\\)","\\(3\\)","\\(5\\)"],ans:2,topic:"DIST",exp:"\\(d = \\sqrt{1^2+2^2+2^2} = \\sqrt{9} = 3\\).",review:"Ôn lại mục III — Khoảng cách"},
+      {q:"A rectangular box has dimensions \\(3\\times 4\\times 12\\). What is the length of its space diagonal?",opts:["\\(13\\)","\\(\\sqrt{41}\\)","\\(\\sqrt{51}\\)","\\(19\\)"],ans:0,topic:"SOLID",exp:"\\(\\sqrt{9+16+144} = \\sqrt{169} = 13\\).",review:"Ôn lại mục IV — Đường chéo hình hộp"},
+      {q:"The volume of a cylinder with radius \\(3\\) and height \\(5\\) is:",opts:["\\(15\\pi\\)","\\(30\\pi\\)","\\(45\\pi\\)","\\(90\\pi\\)"],ans:2,topic:"SOLID",exp:"\\(V = \\pi r^2 h = \\pi\\cdot 9\\cdot 5 = 45\\pi\\).",review:"Ôn lại mục IV — Thể tích hình trụ"},
+      {q:"The surface area of a cube with edge length 4 is:",opts:["\\(24\\)","\\(48\\)","\\(96\\)","\\(144\\)"],ans:2,topic:"SOLID",exp:"\\(S = 6a^2 = 6(16) = 96\\).",review:"Ôn lại mục IV — Diện tích bề mặt"},
+      {q:"The volume of a cone with radius \\(2\\) and height \\(6\\) is:",opts:["\\(4\\pi\\)","\\(8\\pi\\)","\\(12\\pi\\)","\\(24\\pi\\)"],ans:1,topic:"SOLID",exp:"\\(V = \\dfrac{1}{3}\\pi r^2 h = \\dfrac{1}{3}\\pi\\cdot 4\\cdot 6 = 8\\pi\\).",review:"Ôn lại mục IV — Thể tích hình nón"},
+      {q:"The volume of a sphere with radius \\(3\\) is:",opts:["\\(12\\pi\\)","\\(27\\pi\\)","\\(36\\pi\\)","\\(108\\pi\\)"],ans:2,topic:"SOLID",exp:"\\(V = \\dfrac{4}{3}\\pi R^3 = \\dfrac{4}{3}\\pi(27) = 36\\pi\\).",review:"Ôn lại mục IV — Thể tích hình cầu"},
+      {q:"A line perpendicular to a plane is perpendicular to:",opts:["Only one line in the plane","Only lines through its foot","Every line in the plane","Only lines parallel to its projection"],ans:2,topic:"PERP",exp:"Definition: a line perpendicular to a plane is perpendicular to every line in that plane.",review:"Ôn lại mục II — Định nghĩa"},
+      {q:"How many edges does a cube have?",opts:["\\(6\\)","\\(8\\)","\\(12\\)","\\(16\\)"],ans:2,topic:"SOLID",exp:"A cube has 12 edges, 8 vertices, and 6 faces.",review:"Ôn lại mục IV — Hình lập phương"},
+      {q:"How many vertices does a cube have?",opts:["\\(4\\)","\\(6\\)","\\(8\\)","\\(12\\)"],ans:2,topic:"SOLID",exp:"A cube has 8 vertices.",review:"Ôn lại mục IV — Hình lập phương"},
+      {q:"A cross-section of a cube parallel to one face is:",opts:["A triangle","A rectangle","A square","A hexagon"],ans:2,topic:"SOLID",exp:"A plane parallel to a face cuts a square congruent to the face.",review:"Ôn lại mục IV — Thiết diện"},
+      {q:"The dihedral angle between two faces of a regular tetrahedron is:",opts:["\\(45^\\circ\\)","\\(\\arccos(1/3)\\)","\\(60^\\circ\\)","\\(90^\\circ\\)"],ans:1,topic:"ANGLE",exp:"\\(\\cos\\theta = 1/3 \\Rightarrow \\theta \\approx 70.53^\\circ\\).",review:"Ôn lại mục III — Góc nhị diện"},
+      {q:"The volume of a pyramid with base area \\(12\\) and height \\(4\\) is:",opts:["\\(16\\)","\\(24\\)","\\(48\\)","\\(144\\)"],ans:0,topic:"SOLID",exp:"\\(V = \\dfrac{1}{3} Bh = \\dfrac{1}{3}(12)(4) = 16\\).",review:"Ôn lại mục IV — Thể tích hình chóp"},
+      {q:"The distance between points \\((1,1,1)\\) and \\((4,5,13)\\) is:",opts:["\\(10\\)","\\(12\\)","\\(13\\)","\\(\\sqrt{170}\\)"],ans:2,topic:"DIST",exp:"\\(\\sqrt{9+16+144} = \\sqrt{169} = 13\\).",review:"Ôn lại mục III — Khoảng cách"},
+      {q:"In a cube, the angle between two diagonals of adjacent faces sharing a vertex is:",opts:["\\(30^\\circ\\)","\\(45^\\circ\\)","\\(60^\\circ\\)","\\(90^\\circ\\)"],ans:2,topic:"ANGLE",exp:"Vectors \\((1,1,0)\\) and \\((1,0,1)\\): \\(\\cos\\theta = 1/2 \\Rightarrow 60^\\circ\\).",review:"Ôn lại mục III — Góc giữa hai đường"},
+      {q:"The surface area of a rectangular prism \\(2\\times 3\\times 4\\) is:",opts:["\\(24\\)","\\(26\\)","\\(52\\)","\\(94\\)"],ans:2,topic:"SOLID",exp:"\\(S = 2(ab+bc+ca) = 2(6+12+8) = 52\\).",review:"Ôn lại mục IV — Diện tích bề mặt"},
+      {q:"The volume of a square pyramid with base side \\(6\\) and height \\(4\\) is:",opts:["\\(24\\)","\\(36\\)","\\(48\\)","\\(72\\)"],ans:2,topic:"SOLID",exp:"\\(V = \\dfrac{1}{3}(36)(4) = 48\\).",review:"Ôn lại mục IV — Thể tích hình chóp"},
+      {q:"Two planes are perpendicular when:",opts:["They are parallel","They intersect at \\(90^\\circ\\)","They are the same","They do not intersect"],ans:1,topic:"PERP",exp:"Definition: the dihedral angle between them is \\(90^\\circ\\).",review:"Ôn lại mục II — Hai mặt phẳng vuông góc"},
+      {q:"The space diagonal of a unit cube has length:",opts:["\\(1\\)","\\(\\sqrt{2}\\)","\\(\\sqrt{3}\\)","\\(2\\)"],ans:2,topic:"SOLID",exp:"\\(d = \\sqrt{1^2+1^2+1^2} = \\sqrt{3}\\).",review:"Ôn lại mục IV — Đường chéo"},
+      {q:"If a line is perpendicular to a plane, is it perpendicular to every line in that plane?",opts:["No, only to lines through its foot","No, only to lines parallel to its projection","Yes, to every line in the plane","Only if the line passes through the plane"],ans:2,topic:"PERP",exp:"Yes — by definition, a perpendicular line to a plane is perpendicular to every line in the plane.",review:"Ôn lại mục II — Định nghĩa"},
+      {q:"The volume of a regular tetrahedron with edge 3 is:",opts:["\\(\\dfrac{9\\sqrt{2}}{4}\\)","\\(\\dfrac{27}{6}\\)","\\(\\dfrac{27\\sqrt{3}}{12}\\)","\\(\\dfrac{9}{2}\\)"],ans:0,topic:"SOLID",exp:"\\(V = \\dfrac{a^3\\sqrt{2}}{12} = \\dfrac{27\\sqrt{2}}{12} = \\dfrac{9\\sqrt{2}}{4}\\).",review:"Ôn lại mục IV — Tứ diện đều"},
+      {q:"The height of a regular tetrahedron with edge 4 is:",opts:["\\(\\dfrac{4\\sqrt{6}}{3}\\)","\\(\\dfrac{4\\sqrt{3}}{3}\\)","\\(2\\sqrt{2}\\)","\\(4\\)"],ans:0,topic:"SOLID",exp:"\\(h = \\dfrac{a\\sqrt{6}}{3} = \\dfrac{4\\sqrt{6}}{3}\\).",review:"Ôn lại mục IV — Tứ diện đều"},
+      {q:"In a cube with side \\(a\\), how many pairs of skew edges are there?",opts:["\\(12\\)","\\(24\\)","\\(36\\)","\\(48\\)"],ans:1,topic:"PERP",exp:"Each edge is skew to 4 edges → 12×4/2 = 24 pairs.",review:"Ôn lại mục I — Vị trí tương đối"},
+      {q:"The angle between the space diagonal of a cube and its base is:",opts:["\\(30^\\circ\\)","\\(45^\\circ\\)","\\(\\arctan(1/\\sqrt{2})\\)","\\(90^\\circ\\)"],ans:2,topic:"ANGLE",exp:"\\(\\tan\\theta = \\dfrac{a}{a\\sqrt{2}} = \\dfrac{1}{\\sqrt{2}}\\).",review:"Ôn lại mục III — Góc đường và mặt"},
+      {q:"The cross-section of a cube through three vertices \\((1,0,0),(0,1,0),(0,0,1)\\) is:",opts:["A square","A rectangle","An equilateral triangle","A regular hexagon"],ans:2,topic:"SOLID",exp:"The plane \\(x+y+z=1\\) cuts an equilateral triangle with side \\(\\sqrt{2}\\).",review:"Ôn lại mục IV — Thiết diện"},
+      {q:"The volume of a triangular prism with base area \\(6\\) and length \\(10\\) is:",opts:["\\(60\\)","\\(30\\)","\\(16\\)","\\(80\\)"],ans:0,topic:"SOLID",exp:"\\(V = Bh = 6\\cdot 10 = 60\\).",review:"Ôn lại mục IV — Lăng trụ"},
+      {q:"The distance from point \\((0,0,0)\\) to plane \\(x+y+z=3\\) is:",opts:["\\(\\sqrt{3}\\)","\\(3\\sqrt{3}\\)","\\(\\dfrac{3}{\\sqrt{3}}\\)","\\(\\sqrt{6}\\)"],ans:0,topic:"DIST",exp:"\\(d = \\dfrac{|0+0+0-3|}{\\sqrt{3}} = \\sqrt{3}\\).",review:"Ôn lại mục III — Khoảng cách điểm–mặt"},
+      {q:"A square pyramid has base side \\(a\\) and lateral edge \\(a\\sqrt{2}\\). The height is:",opts:["\\(a\\)","\\(\\dfrac{a\\sqrt{3}}{2}\\)","\\(\\dfrac{a\\sqrt{6}}{2}\\)","\\(a\\sqrt{2}\\)"],ans:1,topic:"SOLID",exp:"Half diagonal \\(= \\dfrac{a\\sqrt{2}}{2}\\). \\(h^2 = 2a^2 - \\dfrac{a^2}{2} = \\dfrac{3a^2}{2} \\Rightarrow h = \\dfrac{a\\sqrt{6}}{2}\\).",review:"Ôn lại mục IV — Hình chóp đều"},
+      {q:"A swimming pool is \\(10\\text{ m} \\times 5\\text{ m} \\times 2\\text{ m}\\). Its volume is:",opts:["\\(50\\text{ m}^3\\)","\\(100\\text{ m}^3\\)","\\(150\\text{ m}^3\\)","\\(200\\text{ m}^3\\)"],ans:1,topic:"APP",exp:"\\(V = 10\\cdot 5\\cdot 2 = 100\\text{ m}^3\\).",review:"Ôn lại mục V — Ứng dụng hình hộp"},
+      {q:"A tank is a cylinder with radius \\(2\\text{ m}\\) and height \\(5\\text{ m}\\). Its volume (in \\(\\text{m}^3\\)) is:",opts:["\\(10\\pi\\)","\\(20\\pi\\)","\\(40\\pi\\)","\\(100\\pi\\)"],ans:1,topic:"APP",exp:"\\(V = \\pi(2)^2(5) = 20\\pi\\).",review:"Ôn lại mục V — Ứng dụng hình trụ"}
+    ]
+  },
+  2: {
+    name: "Bộ 2 — Intermediate",
+    desc: "Bài toán ngược, góc giữa đường và mặt, khoảng cách điểm–mặt, hình chóp đều, ứng dụng thực tế.",
+    questions: [
+      {q:"A cube with side 2. The angle between the space diagonal and the base is:",opts:["\\(\\arctan(1/\\sqrt{2})\\)","\\(\\arctan(1/2)\\)","\\(\\arctan(2)\\)","\\(\\arctan(\\sqrt{2})\\)"],ans:0,topic:"ANGLE",exp:"\\(\\tan\\theta = \\dfrac{2}{2\\sqrt{2}} = \\dfrac{1}{\\sqrt{2}}\\).",review:"Ôn lại mục III — Góc đường và mặt"},
+      {q:"A rectangular prism \\(2\\times 3\\times h\\) has volume \\(24\\). Find \\(h\\).",opts:["\\(2\\)","\\(3\\)","\\(4\\)","\\(6\\)"],ans:2,topic:"SOLID",exp:"\\(2\\cdot 3 \\cdot h = 24 \\Rightarrow h = 4\\).",review:"Ôn lại mục IV — Thể tích"},
+      {q:"The angle between two face diagonals of a cube sharing a vertex is:",opts:["\\(30^\\circ\\)","\\(45^\\circ\\)","\\(60^\\circ\\)","\\(90^\\circ\\)"],ans:2,topic:"ANGLE",exp:"Dot product \\((1,1,0)\\cdot(1,0,1)=1\\), \\(\\cos\\theta=1/2\\).",review:"Ôn lại mục III — Góc giữa hai đường"},
+      {q:"The distance from a vertex to the opposite face in a regular tetrahedron with edge \\(a\\) is:",opts:["\\(\\dfrac{a\\sqrt{3}}{2}\\)","\\(\\dfrac{a\\sqrt{6}}{3}\\)","\\(\\dfrac{a\\sqrt{2}}{2}\\)","\\(a\\sqrt{3}\\)"],ans:1,topic:"SOLID",exp:"Height of regular tetrahedron: \\(h = \\dfrac{a\\sqrt{6}}{3}\\).",review:"Ôn lại mục IV — Tứ diện đều"},
+      {q:"A square pyramid has base side \\(a\\) and height \\(h\\). Its slant height is:",opts:["\\(\\sqrt{h^2+a^2}\\)","\\(\\sqrt{h^2+a^2/4}\\)","\\(\\sqrt{h^2-a^2/4}\\)","\\(\\sqrt{h^2+a^2/2}\\)"],ans:1,topic:"SOLID",exp:"\\(\\ell = \\sqrt{h^2+(a/2)^2}\\).",review:"Ôn lại mục IV — Hình chóp đều"},
+      {q:"The distance between opposite edges of a regular tetrahedron with edge \\(a\\) is:",opts:["\\(\\dfrac{a}{2}\\)","\\(\\dfrac{a\\sqrt{2}}{2}\\)","\\(\\dfrac{a\\sqrt{3}}{2}\\)","\\(a\\)"],ans:1,topic:"DIST",exp:"Opposite edges are skew. Their distance is \\(a\\sqrt{2}/2\\).",review:"Ôn lại mục III — Khoảng cách"},
+      {q:"The volume of a square pyramid with base side \\(4\\) and height \\(3\\) is:",opts:["\\(12\\)","\\(16\\)","\\(24\\)","\\(48\\)"],ans:1,topic:"SOLID",exp:"\\(V = \\dfrac{1}{3}(16)(3) = 16\\).",review:"Ôn lại mục IV — Thể tích hình chóp"},
+      {q:"Are vectors \\((1,0,1)\\) and \\((1,1,-1)\\) perpendicular?",opts:["Yes, dot product is 0","No, they are parallel","No, they have different magnitudes","Only in 2D"],ans:0,topic:"PERP",exp:"\\(1\\cdot1 + 0\\cdot1 + 1\\cdot(-1) = 0\\).",review:"Ôn lại mục II — Vector vuông góc"},
+      {q:"The plane through \\((1,0,0), (0,1,0), (0,0,1)\\) cuts the unit cube in:",opts:["A square","A rectangle","An equilateral triangle","A regular hexagon"],ans:2,topic:"SOLID",exp:"The plane \\(x+y+z=1\\) cuts an equilateral triangle.",review:"Ôn lại mục IV — Thiết diện"},
+      {q:"The distance between parallel planes \\(x+y+z=1\\) and \\(x+y+z=3\\) is:",opts:["\\(1\\)","\\(\\dfrac{2}{\\sqrt{3}}\\)","\\(\\sqrt{2}\\)","\\(2\\)"],ans:1,topic:"DIST",exp:"\\(d = \\dfrac{2}{\\sqrt{3}} = \\dfrac{2\\sqrt{3}}{3}\\).",review:"Ôn lại mục III — Khoảng cách hai mặt phẳng"},
+      {q:"A square pyramid has base side 4 and slant height 5. Its height is:",opts:["\\(3\\)","\\(\\sqrt{17}\\)","\\(\\sqrt{21}\\)","\\(4\\)"],ans:2,topic:"SOLID",exp:"\\(h = \\sqrt{5^2 - 2^2} = \\sqrt{21}\\).",review:"Ôn lại mục IV — Hình chóp đều"},
+      {q:"The angle between the diagonal of a cube and an edge from the same vertex:",opts:["\\(\\arctan(1/\\sqrt{2})\\)","\\(\\arccos(1/\\sqrt{3})\\)","\\(\\arccos(1/3)\\)","\\(45^\\circ\\)"],ans:1,topic:"ANGLE",exp:"\\((1,1,1)\\cdot(1,0,0)=1\\), \\(\\cos\\theta = 1/\\sqrt{3}\\).",review:"Ôn lại mục III — Góc"},
+      {q:"A cone has radius 3 and height 4. Its slant height is:",opts:["\\(5\\)","\\(\\sqrt{7}\\)","\\(7\\)","\\(\\sqrt{13}\\)"],ans:0,topic:"SOLID",exp:"\\(\\ell = \\sqrt{3^2+4^2} = 5\\).",review:"Ôn lại mục IV — Hình nón"},
+      {q:"A sphere has surface area \\(36\\pi\\). Its radius is:",opts:["\\(3\\)","\\(4\\)","\\(6\\)","\\(9\\)"],ans:0,topic:"SOLID",exp:"\\(4\\pi R^2 = 36\\pi \\Rightarrow R^2 = 9 \\Rightarrow R = 3\\).",review:"Ôn lại mục IV — Hình cầu"},
+      {q:"A right pyramid has base area 25 and height 6. Volume is:",opts:["\\(50\\)","\\(75\\)","\\(150\\)","\\(300\\)"],ans:0,topic:"SOLID",exp:"\\(V = \\dfrac{1}{3}(25)(6) = 50\\).",review:"Ôn lại mục IV — Thể tích hình chóp"},
+      {q:"If line \\(d \\perp (P)\\) and \\(a \\subset (P)\\), which must be true?",opts:["\\(d \\parallel a\\)","\\(d \\perp a\\)","\\(d\\) intersects \\(a\\)","Nothing"],ans:1,topic:"PERP",exp:"\\(d \\perp (P)\\) means \\(d\\) is perpendicular to every line in \\((P)\\).",review:"Ôn lại mục II — Định lý"},
+      {q:"The angle between the diagonal of a square face and the edge of that face is:",opts:["\\(30^\\circ\\)","\\(45^\\circ\\)","\\(60^\\circ\\)","\\(90^\\circ\\)"],ans:1,topic:"ANGLE",exp:"Diagonals of a square bisect the right angle into two \\(45^\\circ\\) angles.",review:"Ôn lại mục III — Góc"},
+      {q:"A tetrahedron has 4 triangular faces. How many edges does it have?",opts:["\\(4\\)","\\(5\\)","\\(6\\)","\\(8\\)"],ans:2,topic:"SOLID",exp:"A tetrahedron has 6 edges (4C2 = 6).",review:"Ôn lại mục IV — Tứ diện"},
+      {q:"The intersection of two perpendicular planes is:",opts:["A point","A line","A plane","Empty"],ans:1,topic:"PERP",exp:"Two non-parallel planes always intersect in a line.",review:"Ôn lại mục II — Giao tuyến"},
+      {q:"A cube's body diagonal has length \\(3\\sqrt{3}\\). Its edge length is:",opts:["\\(3\\)","\\(\\sqrt{3}\\)","\\(\\dfrac{3\\sqrt{3}}{3}\\)","\\(9\\)"],ans:0,topic:"SOLID",exp:"\\(a\\sqrt{3} = 3\\sqrt{3} \\Rightarrow a = 3\\).",review:"Ôn lại mục IV — Đường chéo hình lập phương"},
+      {q:"The locus of points equidistant from a line in space is:",opts:["A line","A plane","A cylinder","A sphere"],ans:2,topic:"DIST",exp:"Points equidistant from a line form a cylinder around it.",review:"Ôn lại mục III — Quỹ tích"},
+      {q:"The angle between a lateral edge and the base of a square pyramid with all edges equal is:",opts:["\\(\\arccos(1/\\sqrt{2})\\)","\\(\\arccos(1/\\sqrt{3})\\)","\\(60^\\circ\\)","\\(90^\\circ\\)"],ans:0,topic:"ANGLE",exp:"If all edges \\(= a\\), the height \\(= \\dfrac{a\\sqrt{2}}{2}\\) and half-diagonal of base \\(= \\dfrac{a\\sqrt{2}}{2}\\). Projection of lateral edge onto base is half-diagonal, so \\(\\cos\\theta = \\dfrac{a\\sqrt{2}/2}{a} = \\dfrac{\\sqrt{2}}{2} \\Rightarrow \\theta = 45^\\circ\\). Equivalently, \\(\\theta = \\arccos(1/\\sqrt{2})\\).",review:"Ôn lại mục III — Góc"},
+      {q:"A sphere is inscribed in a cube of side 6. Its radius is:",opts:["\\(2\\)","\\(3\\)","\\(4\\)","\\(6\\)"],ans:1,topic:"SOLID",exp:"Inscribed sphere touches all faces; radius = half side = 3.",review:"Ôn lại mục IV — Hình cầu nội tiếp"},
+      {q:"The volume of a sphere circumscribing a cube of side 2 is:",opts:["\\(4\\sqrt{3}\\pi\\)","\\(8\\sqrt{3}\\pi\\)","\\(\\dfrac{32\\sqrt{3}\\pi}{3}\\)","\\(12\\pi\\)"],ans:0,topic:"SOLID",exp:"Cube's body diagonal \\(= 2\\sqrt{3}\\) = diameter. \\(R = \\sqrt{3}\\). \\(V = \\dfrac{4}{3}\\pi(3\\sqrt{3}) = 4\\sqrt{3}\\pi\\).",review:"Ôn lại mục IV — Hình cầu ngoại tiếp"},
+      {q:"The distance from \\((1,2,3)\\) to plane \\(2x-y+2z=0\\) is:",opts:["\\(\\dfrac{4}{3}\\)","\\(\\dfrac{2}{3}\\)","\\(2\\)","\\(4\\)"],ans:2,topic:"DIST",exp:"\\(d = \\dfrac{|2-2+6|}{\\sqrt{4+1+4}} = \\dfrac{6}{3} = 2\\).",review:"Ôn lại mục III — Khoảng cách điểm–mặt"},
+      {q:"A can is a cylinder with radius 4 cm and height 10 cm. How much liquid can it hold (in \\(\\text{cm}^3\\))?",opts:["\\(40\\pi\\)","\\(80\\pi\\)","\\(160\\pi\\)","\\(320\\pi\\)"],ans:2,topic:"APP",exp:"\\(V = \\pi(4^2)(10) = 160\\pi\\).",review:"Ôn lại mục V — Ứng dụng hình trụ"},
+      {q:"A drone flies from \\((0,0,0)\\) to \\((3,4,12)\\). The distance is:",opts:["\\(13\\)","\\(15\\)","\\(\\sqrt{170}\\)","\\(17\\)"],ans:0,topic:"APP",exp:"\\(\\sqrt{9+16+144} = 13\\).",review:"Ôn lại mục V — Khoảng cách 3D"},
+      {q:"A roof pyramid has square base 10 m, height 12 m. Volume:",opts:["\\(120\\)","\\(200\\)","\\(400\\)","\\(600\\)"],ans:2,topic:"APP",exp:"\\(V = \\dfrac{1}{3}(100)(12) = 400\\text{ m}^3\\).",review:"Ôn lại mục V — Thể tích chóp"},
+      {q:"A cone has radius 3 cm and height 4 cm. Its total surface area is:",opts:["\\(12\\pi\\)","\\(15\\pi\\)","\\(24\\pi\\)","\\(33\\pi\\)"],ans:2,topic:"SOLID",exp:"\\(\\ell = 5\\). \\(S = \\pi r(r+\\ell) = \\pi(3)(8) = 24\\pi\\).",review:"Ôn lại mục IV — Diện tích hình nón"}
+    ]
+  },
+  3: {
+    name: "Bộ 3 — Advanced",
+    desc: "Bài toán phức hợp: góc giữa đường và mặt, khoảng cách chéo nhau, tối ưu hóa, thiết diện, hình cầu nội/ngoại tiếp.",
+    questions: [
+      {q:"In a regular tetrahedron with edge \\(a\\), the angle between an edge and the opposite face is:",opts:["\\(\\arccos(1/3)\\)","\\(\\arccos(\\sqrt{3}/3)\\)","\\(\\arccos(1/2)\\)","\\(\\arccos(\\sqrt{2}/2)\\)"],ans:1,topic:"ANGLE",exp:"\\(\\cos\\theta = \\dfrac{\\sqrt{3}}{3}\\).",review:"Ôn lại mục III — Góc đường và mặt"},
+      {q:"Cube side 2. The angle between the space diagonal and a face diagonal:",opts:["\\(\\arccos(\\sqrt{3}/3)\\)","\\(\\arccos(\\sqrt{6}/3)\\)","\\(\\arccos(1/3)\\)","\\(\\arccos(1/2)\\)"],ans:1,topic:"ANGLE",exp:"\\((1,1,1)\\cdot(1,1,0)=2\\), \\(\\cos\\theta = \\dfrac{2}{\\sqrt{3}\\cdot\\sqrt{2}} = \\dfrac{\\sqrt{6}}{3}\\).",review:"Ôn lại mục III — Góc"},
+      {q:"Cube side 2. The distance between \\(AA'\\) and the base diagonal \\(BD\\) is:",opts:["\\(1\\)","\\(\\sqrt{2}\\)","\\(2\\)","\\(\\sqrt{3}\\)"],ans:1,topic:"DIST",exp:"Projection of \\(AA'\\) onto base is \\(A\\); distance from \\(A\\) to \\(BD\\) is \\(\\sqrt{2}\\).",review:"Ôn lại mục III — Khoảng cách"},
+      {q:"The maximum volume of a box inscribed in a sphere of radius \\(R\\) is:",opts:["\\(4R^3\\)","\\(\\dfrac{8R^3}{3\\sqrt{3}}\\)","\\(\\dfrac{4R^3}{3}\\)","\\(6R^3\\)"],ans:1,topic:"SOLID",exp:"A cube of side \\(2R/\\sqrt{3}\\) has max volume \\(\\dfrac{8R^3}{3\\sqrt{3}}\\).",review:"Ôn lại mục V — Tối ưu hóa"},
+      {q:"A square pyramid has base side 4 and side edge 5. Its height is:",opts:["\\(3\\)","\\(\\sqrt{17}\\)","\\(\\sqrt{21}\\)","\\(4\\)"],ans:1,topic:"SOLID",exp:"Half diagonal of base \\(= 2\\sqrt{2}\\). \\(h^2 = 5^2 - (2\\sqrt{2})^2 = 25-8 = 17\\), so \\(h = \\sqrt{17}\\).",review:"Ôn lại mục IV — Hình chóp đều"},
+      {q:"Tetrahedron \\(ABCD\\) has \\(AB \\perp AC\\), \\(AB \\perp AD\\), \\(AC \\perp AD\\). \\(AB=2\\), \\(AC=3\\), \\(AD=6\\). Then \\(BC =\\)",opts:["\\(\\sqrt{5}\\)","\\(\\sqrt{13}\\)","\\(\\sqrt{40}\\)","\\(7\\)"],ans:1,topic:"PERP",exp:"\\(BC^2 = AB^2+AC^2 = 4+9 = 13 \\Rightarrow BC = \\sqrt{13}\\).",review:"Ôn lại mục II — Ba đường vuông góc"},
+      {q:"Cube with edge \\(a\\). Angle between \\(AB'\\) and \\(A'C'\\):",opts:["\\(30^\\circ\\)","\\(45^\\circ\\)","\\(60^\\circ\\)","\\(90^\\circ\\)"],ans:2,topic:"ANGLE",exp:"\\((a,0,a)\\cdot(a,a,0) = a^2\\), \\(\\cos\\theta=1/2 \\Rightarrow \\theta = 60^\\circ\\).",review:"Ôn lại mục III — Góc giữa hai đường"},
+      {q:"Angle between plane \\(x+y+z=1\\) and the \\(xy\\)-plane:",opts:["\\(\\arccos(1/\\sqrt{3})\\)","\\(\\arccos(1/2)\\)","\\(\\arccos(1/3)\\)","\\(30^\\circ\\)"],ans:0,topic:"ANGLE",exp:"Normals \\((1,1,1)\\) and \\((0,0,1)\\): \\(\\cos\\theta = \\dfrac{1}{\\sqrt{3}}\\).",review:"Ôn lại mục III — Góc giữa hai mặt"},
+      {q:"Distance from origin to plane \\(x+y+z=a\\) (with \\(a>0\\)):",opts:["\\(\\dfrac{a}{2}\\)","\\(\\dfrac{a\\sqrt{3}}{3}\\)","\\(\\dfrac{a\\sqrt{2}}{2}\\)","\\(\\dfrac{a\\sqrt{6}}{3}\\)"],ans:1,topic:"DIST",exp:"\\(d = \\dfrac{|{-a}|}{\\sqrt{3}} = \\dfrac{a}{\\sqrt{3}} = \\dfrac{a\\sqrt{3}}{3}\\).",review:"Ôn lại mục III — Khoảng cách"},
+      {q:"Regular tetrahedron edge \\(2\\sqrt{2}\\). Its height is:",opts:["\\(2\\)","\\(\\dfrac{4\\sqrt{3}}{3}\\)","\\(\\dfrac{2\\sqrt{6}}{3}\\)","\\(2\\sqrt{3}\\)"],ans:1,topic:"SOLID",exp:"\\(h = \\dfrac{a\\sqrt{6}}{3} = \\dfrac{2\\sqrt{2}\\cdot\\sqrt{6}}{3} = \\dfrac{4\\sqrt{3}}{3}\\).",review:"Ôn lại mục IV — Tứ diện đều"},
+      {q:"A cube with side 2 has an inscribed sphere. Its radius is:",opts:["\\(1\\)","\\(\\sqrt{2}\\)","\\(\\sqrt{3}\\)","\\(2\\)"],ans:0,topic:"SOLID",exp:"Inscribed sphere touches all faces; radius = half side = 1.",review:"Ôn lại mục IV — Hình cầu nội tiếp"},
+      {q:"A cube with side 2 has a circumscribed sphere. Its radius is:",opts:["\\(1\\)","\\(\\sqrt{2}\\)","\\(\\sqrt{3}\\)","\\(2\\)"],ans:2,topic:"SOLID",exp:"Diameter = body diagonal = \\(2\\sqrt{3}\\), radius = \\(\\sqrt{3}\\).",review:"Ôn lại mục IV — Hình cầu ngoại tiếp"},
+      {q:"In a cube, how many body diagonals?",opts:["\\(2\\)","\\(4\\)","\\(6\\)","\\(8\\)"],ans:1,topic:"SOLID",exp:"A cube has 4 body diagonals (connecting pairs of opposite vertices).",review:"Ôn lại mục IV — Hình lập phương"},
+      {q:"A square pyramid has base side 6 and height 4. Its lateral edge length is:",opts:["\\(5\\)","\\(\\sqrt{34}\\)","\\(\\sqrt{52}\\)","\\(\\sqrt{68}\\)"],ans:1,topic:"SOLID",exp:"Half diagonal of base = \\(3\\sqrt{2}\\). Lateral edge \\(L\\): \\(L^2 = h^2 + (3\\sqrt{2})^2 = 16+18=34\\), so \\(L = \\sqrt{34}\\). (Chú ý: slant height \\(\\ell = \\sqrt{h^2+3^2}=5\\), nhưng đề hỏi lateral edge.)",review:"Ôn lại mục IV — Hình chóp đều"},
+      {q:"The angle between two body diagonals of a cube is:",opts:["\\(\\arccos(1/3)\\)","\\(60^\\circ\\)","\\(90^\\circ\\)","\\(\\arccos(1/2)\\)"],ans:0,topic:"ANGLE",exp:"Vectors \\((1,1,1)\\) and \\((-1,1,1)\\). \\(\\cos\\theta = \\dfrac{|{-1+1+1}|}{3} = \\dfrac{1}{3}\\).",review:"Ôn lại mục III — Góc"},
+      {q:"A rectangular prism \\(2\\times 3\\times 6\\). Its body diagonal is:",opts:["\\(7\\)","\\(8\\)","\\(9\\)","\\(\\sqrt{41}\\)"],ans:0,topic:"SOLID",exp:"\\(\\sqrt{4+9+36} = \\sqrt{49} = 7\\).",review:"Ôn lại mục IV — Đường chéo"},
+      {q:"The plane through \\(A(1,0,0), B(0,1,0), C(0,0,1)\\). Distance from origin to plane:",opts:["\\(1\\)","\\(\\dfrac{1}{\\sqrt{3}}\\)","\\(\\dfrac{1}{3}\\)","\\(\\sqrt{3}\\)"],ans:1,topic:"DIST",exp:"Plane: \\(x+y+z=1\\). \\(d = \\dfrac{1}{\\sqrt{3}} = \\dfrac{\\sqrt{3}}{3}\\).",review:"Ôn lại mục III — Khoảng cách"},
+      {q:"In a regular tetrahedron edge \\(a\\), the dihedral angle between two faces is:",opts:["\\(\\arccos(1/3)\\)","\\(\\arccos(\\sqrt{3}/3)\\)","\\(60^\\circ\\)","\\(90^\\circ\\)"],ans:0,topic:"ANGLE",exp:"\\(\\cos\\theta = 1/3\\), so \\(\\theta \\approx 70.53^\\circ\\).",review:"Ôn lại mục III — Góc nhị diện"},
+      {q:"A spherical balloon with surface area \\(100\\pi\\). Its volume is:",opts:["\\(\\dfrac{100\\pi}{3}\\)","\\(\\dfrac{500\\pi}{3}\\)","\\(\\dfrac{1000\\pi}{3}\\)","\\(\\dfrac{4000\\pi}{3}\\)"],ans:1,topic:"SOLID",exp:"\\(4\\pi R^2 = 100\\pi \\Rightarrow R = 5\\). \\(V = \\dfrac{4}{3}\\pi(125) = \\dfrac{500\\pi}{3}\\).",review:"Ôn lại mục IV — Hình cầu"},
+      {q:"A regular tetrahedron with edge \\(a\\) has surface area:",opts:["\\(a^2\\sqrt{3}\\)","\\(a^2\\sqrt{2}\\)","\\(2a^2\\sqrt{3}\\)","\\(\\dfrac{a^2\\sqrt{3}}{2}\\)"],ans:0,topic:"SOLID",exp:"Each face area = \\(\\dfrac{a^2\\sqrt{3}}{4}\\). Total = \\(4 \\times \\dfrac{a^2\\sqrt{3}}{4} = a^2\\sqrt{3}\\).",review:"Ôn lại mục IV — Diện tích tứ diện đều"},
+      {q:"A right circular cone has radius 3 and height 4. Its lateral surface area is:",opts:["\\(12\\pi\\)","\\(15\\pi\\)","\\(20\\pi\\)","\\(24\\pi\\)"],ans:1,topic:"SOLID",exp:"\\(\\ell = 5\\). Lateral area \\(= \\pi r\\ell = 15\\pi\\).",review:"Ôn lại mục IV — Diện tích nón"},
+      {q:"The distance from point \\((0,0,0)\\) to plane \\(2x+3y+6z=14\\) is:",opts:["\\(1\\)","\\(2\\)","\\(\\dfrac{14}{5}\\)","\\(3\\)"],ans:1,topic:"DIST",exp:"\\(d = \\dfrac{14}{\\sqrt{4+9+36}} = \\dfrac{14}{7} = 2\\).",review:"Ôn lại mục III — Khoảng cách"},
+      {q:"A right pyramid has base perimeter 20 and height 6. If the base is a square, its volume is:",opts:["\\(50\\)","\\(100\\)","\\(150\\)","\\(200\\)"],ans:0,topic:"SOLID",exp:"Base side \\(= 20/4 = 5\\), base area \\(= 25\\). \\(V = \\dfrac{1}{3}(25)(6) = 50\\).",review:"Ôn lại mục IV — Thể tích chóp"},
+      {q:"The sum of all edges of a cube is 48. Its volume is:",opts:["\\(12\\)","\\(27\\)","\\(64\\)","\\(125\\)"],ans:2,topic:"SOLID",exp:"12 edges → each edge = 4. \\(V = 4^3 = 64\\).",review:"Ôn lại mục IV — Hình lập phương"},
+      {q:"A cube's total surface area is \\(96\\). Its edge length is:",opts:["\\(2\\)","\\(3\\)","\\(4\\)","\\(6\\)"],ans:2,topic:"SOLID",exp:"\\(6a^2 = 96 \\Rightarrow a^2 = 16 \\Rightarrow a = 4\\).",review:"Ôn lại mục IV — Diện tích"},
+      {q:"A pyramid has a square base with side 4 and lateral edge 6. Its height is:",opts:["\\(\\sqrt{28}\\)","\\(\\sqrt{32}\\)","\\(\\sqrt{36}\\)","\\(\\sqrt{20}\\)"],ans:0,topic:"SOLID",exp:"Half diagonal of base = \\(2\\sqrt{2}\\). \\(h^2 = 36 - 8 = 28 \\Rightarrow h = 2\\sqrt{7}\\).",review:"Ôn lại mục IV — Hình chóp đều"},
+      {q:"Which of the following is NOT necessarily perpendicular in a cube?",opts:["Adjacent edges","Adjacent faces","Space diagonal and face diagonal","Two diagonals of the same square face"],ans:2,topic:"PERP",exp:"Space diagonal is NOT generally perpendicular to a face diagonal (e.g., \\((1,1,1)\\cdot(1,1,0)=2\\ne 0\\)). Adjacent edges, adjacent faces, and diagonals of the same square face are always perpendicular.",review:"Ôn lại mục II — Quan hệ vuông góc"},
+      {q:"A rectangular box has dimensions 1, 2, 2. Its space diagonal equals:",opts:["\\(2\\)","\\(3\\)","\\(\\sqrt{5}\\)","\\(5\\)"],ans:1,topic:"SOLID",exp:"\\(\\sqrt{1+4+4} = 3\\).",review:"Ôn lại mục IV — Đường chéo"},
+      {q:"A cylindrical tank with radius 5 ft and height 10 ft holds (in cubic feet):",opts:["\\(250\\pi\\)","\\(500\\pi\\)","\\(50\\pi\\)","\\(1000\\pi\\)"],ans:0,topic:"APP",exp:"\\(V = \\pi(5^2)(10) = 250\\pi\\).",review:"Ôn lại mục V — Ứng dụng"},
+      {q:"A right square pyramid has base side 6 and height 4. Its lateral surface area is (slant height 5):",opts:["\\(30\\)","\\(60\\)","\\(120\\)","\\(150\\)"],ans:1,topic:"APP",exp:"Each lateral face: \\(\\dfrac{1}{2}(6)(5) = 15\\). 4 faces = 60.",review:"Ôn lại mục V — Ứng dụng diện tích"}
+    ]
+  }
+};
+
+const TEST_DURATION = 45 * 60;
+let testState = null;
+let testTimerInterval = null;
+
+function renderSatSetSelector(){
+  const c = document.getElementById('satSetSelector');
+  c.innerHTML = '';
+  Object.keys(SAT_SETS).forEach(k=>{
+    const s = SAT_SETS[k];
+    const card = document.createElement('div');
+    card.className = 'set-card';
+    card.onclick = () => startSetTest(parseInt(k));
+    card.innerHTML = `
+      <div class="set-badge">BỘ ${k}</div>
+      <h4>${s.name}</h4>
+      <p>${s.desc}</p>
+      <div class="set-meta">
+        <span><strong>30</strong> câu</span>
+        <span><strong>45:00</strong> phút</span>
+        <span><strong>A–D</strong></span>
+      </div>
+      <div class="set-start">▶ Bắt đầu làm bài →</div>`;
+    c.appendChild(card);
+  });
+}
+
+function startSetTest(setNum){
+  testState = {
+    setNum, current: 0,
+    answers: new Array(30).fill(null),
+    timeLeft: TEST_DURATION,
+    submitted: false
+  };
+  switchTab('sat');
+  showScreen('test');
+  document.getElementById('testSetName').textContent = SAT_SETS[setNum].name;
+  renderNavGrid();
+  renderTestQuestion();
+  startTestTimer();
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function startTestTimer(){
+  if(testTimerInterval) clearInterval(testTimerInterval);
+  updateTimerDisplay();
+  testTimerInterval = setInterval(()=>{
+    if(!testState || testState.submitted) return;
+    testState.timeLeft--;
+    updateTimerDisplay();
+    if(testState.timeLeft <= 0){clearInterval(testTimerInterval);testTimerInterval = null;submitTest(true);}
+  }, 1000);
+}
+
+function updateTimerDisplay(){
+  if(!testState) return;
+  const el = document.getElementById('testTimer');
+  const t = Math.max(0, testState.timeLeft);
+  const m = String(Math.floor(t/60)).padStart(2,'0');
+  const s = String(t%60).padStart(2,'0');
+  el.textContent = `${m}:${s}`;
+  el.classList.remove('warning','danger');
+  if(t <= 60) el.classList.add('danger');
+  else if(t <= 300) el.classList.add('warning');
+}
+
+function renderNavGrid(){
+  const grid = document.getElementById('navGrid');
+  grid.innerHTML = '';
+  for(let i=0;i<30;i++){
+    const b = document.createElement('button');
+    b.className = 'nav-cell';
+    b.textContent = i+1;
+    b.onclick = () => { testState.current = i; renderTestQuestion(); renderNavGrid(); };
+    grid.appendChild(b);
+  }
+  updateNavStatus();
+}
+
+function updateNavStatus(){
+  const cells = document.querySelectorAll('#navGrid .nav-cell');
+  cells.forEach((c,i)=>{
+    c.classList.toggle('answered', testState.answers[i] !== null);
+    c.classList.toggle('current', i === testState.current);
+  });
+  const answered = testState.answers.filter(a=>a!==null).length;
+  document.getElementById('testProgress').textContent = `Câu ${testState.current+1} / 30 · Đã trả lời ${answered}/30`;
+}
+
+function renderTestQuestion(){
+  const item = SAT_SETS[testState.setNum].questions[testState.current];
+  document.getElementById('testQNum').textContent = testState.current+1;
+  document.getElementById('testQText').innerHTML = item.q;
+  const optsC = document.getElementById('testOptions');
+  optsC.innerHTML = '';
+  item.opts.forEach((o,i)=>{
+    const b = document.createElement('button');
+    b.className = 'option';
+    if(testState.answers[testState.current] === i) b.classList.add('selected');
+    b.innerHTML = `<span class="letter">${letterMap[i]}</span><span class="opt-text">${o}</span>`;
+    b.onclick = () => selectTestOption(i);
+    optsC.appendChild(b);
+  });
+  document.getElementById('testQuestionCard').classList.remove('correct','wrong');
+  document.getElementById('btnPrev').disabled = testState.current === 0;
+  document.getElementById('btnNext').textContent = testState.current === 29 ? '📝 Nộp bài' : 'Câu tiếp →';
+  if(window.renderMathInElement){renderMathInElement(document.getElementById('testQuestionCard'),{delimiters:[{left:'\\(',right:'\\)',display:false}]});}
+  updateNavStatus();
+}
+
+function selectTestOption(optIdx){
+  if(testState.submitted) return;
+  testState.answers[testState.current] = optIdx;
+  document.querySelectorAll('#testOptions .option').forEach((o,i)=>o.classList.toggle('selected', i === optIdx));
+  updateNavStatus();
+}
+
+function goToQuestion(i){if(i<0||i>29) return;testState.current = i;renderTestQuestion();}
+
+document.getElementById('btnPrev').onclick = ()=>goToQuestion(testState.current-1);
+document.getElementById('btnNext').onclick = ()=>{if(testState.current === 29){submitTest(false);}else{goToQuestion(testState.current+1);}};
+document.getElementById('btnQuitTest').onclick = ()=>{
+  if(confirm('Bạn có chắc muốn thoát? Bài làm sẽ không được lưu.')){
+    if(testTimerInterval) clearInterval(testTimerInterval);
+    testTimerInterval = null; testState = null;
+    const c = document.getElementById('satResultScreen');
+    c.style.display = 'none'; c.innerHTML = '';
+    switchTab('sat');
+    showScreen('selector');
+  }
+};
+document.getElementById('btnSubmitTest').onclick = ()=>submitTest(false);
+
+function submitTest(auto){
+  if(!testState || testState.submitted) return;
+  if(!auto){
+    const unanswered = testState.answers.filter(a=>a===null).length;
+    if(unanswered > 0){
+      if(!confirm(`Bạn còn ${unanswered} câu chưa trả lời. Vẫn nộp bài?`)) return;
+    }else{
+      if(!confirm('Nộp bài và xem kết quả?')) return;
+    }
+  }
+  testState.submitted = true;
+  if(testTimerInterval){clearInterval(testTimerInterval);testTimerInterval = null;}
+  document.getElementById('satTestScreen').style.display = 'none';
+  showResultNotification(auto);
+  playFanfare();
+}
+
+function showResultNotification(auto){
+  const setNum = testState.setNum;
+  const questions = SAT_SETS[setNum].questions;
+  let correct = 0, wrong = 0, unanswered = 0;
+  const topicStat = {};
+  Object.keys(TOPICS).forEach(k=>topicStat[k]={correct:0,total:0});
+  const wrongList = [];
+
+  questions.forEach((item,i)=>{
+    const ans = testState.answers[i];
+    topicStat[item.topic].total++;
+    if(ans === null){unanswered++; wrongList.push({idx:i,item,yourAns:null});}
+    else if(ans === item.ans){correct++; topicStat[item.topic].correct++;}
+    else{wrong++; wrongList.push({idx:i,item,yourAns:ans});}
+  });
+
+  const total = questions.length;
+  const pct = Math.round(correct/total*100);
+  const icon = pct>=80?'🎉':pct>=60?'📊':'📚';
+  const title = auto ? '⏰ Hết giờ làm bài!' : '✅ Đã nộp bài thành công!';
+
+  const weakTopics = Object.keys(topicStat)
+    .filter(k=>topicStat[k].total>0 && topicStat[k].correct/topicStat[k].total < 0.6)
+    .map(k=>({
+      key:k, name:TOPICS[k],
+      correct:topicStat[k].correct,
+      total:topicStat[k].total,
+      pct:Math.round(topicStat[k].correct/topicStat[k].total*100)
+    }))
+    .sort((a,b)=>a.pct-b.pct);
+
+  const overlay = document.createElement('div');
+  overlay.className = 'notify-overlay';
+  overlay.id = 'notifyOverlay';
+  overlay.innerHTML = `
+    <div class="notify-modal" onclick="event.stopPropagation()">
+      <div class="notify-head">
+        <div class="notify-icon">${icon}</div>
+        <h2>${title}</h2>
+        <p>${SAT_SETS[setNum].name}</p>
+      </div>
+      <div class="notify-body">
+        <div class="notify-score">
+          <div class="big">${correct}/${total}</div>
+          <div class="lbl">Câu đúng · ${pct}%</div>
+        </div>
+        <div class="notify-stat-row">
+          <div class="notify-stat green"><div class="num">${correct}</div><div class="lbl">Đúng</div></div>
+          <div class="notify-stat red"><div class="num">${wrong}</div><div class="lbl">Sai</div></div>
+          <div class="notify-stat"><div class="num">${unanswered}</div><div class="lbl">Bỏ trống</div></div>
+        </div>
+        ${wrongList.length > 0 ? `
+        <div class="notify-section">
+          <h4>❌ Lỗi sai cần chú ý (${wrongList.length} câu)</h4>
+          <ul>
+            ${wrongList.slice(0,5).map(w=>`
+              <li class="err">
+                <strong>Câu ${w.idx+1}</strong> · ${TOPICS[w.item.topic]} — 
+                ${w.yourAns===null
+                  ? '<em>Bạn bỏ trống</em>'
+                  : `Bạn chọn <strong>${letterMap[w.yourAns]}</strong>`}
+                · Đáp án đúng: <strong>${letterMap[w.item.ans]}</strong>
+              </li>
+            `).join('')}
+            ${wrongList.length>5?`<li class="err" style="text-align:center;font-style:italic;background:#fff5f5">… và ${wrongList.length-5} câu khác — xem chi tiết bên dưới</li>`:''}
+          </ul>
+        </div>` : `
+        <div class="notify-section">
+          <h4 style="color:var(--sat-green)">🌟 Tất cả câu đều chính xác!</h4>
+          <ul><li style="border-left-color:var(--sat-green);background:#f0faf1">Không có lỗi sai. Em sẵn sàng cho bộ đề khó hơn!</li></ul>
+        </div>`}
+        ${weakTopics.length > 0 ? `
+        <div class="notify-section">
+          <h4>📖 Kiến thức cần ôn lại ngay</h4>
+          <ul>
+            ${weakTopics.map(t=>`
+              <li>
+                <strong>${t.name}</strong> — ${t.correct}/${t.total} (${t.pct}%)
+                <span class="rec">${TOPIC_RECOMMENDATIONS[t.key]}</span>
+              </li>
+            `).join('')}
+          </ul>
+        </div>` : `
+        <div class="notify-section">
+          <h4 style="color:var(--sat-green)">🎯 Không có chủ đề nào dưới 60%</h4>
+        </div>`}
+      </div>
+      <div class="notify-actions">
+        <button class="btn btn-primary" onclick="closeNotificationAndShowResult()">📋 Xem kết quả chi tiết</button>
+        <button class="btn btn-outline" onclick="closeNotificationAndReview()">📐 Ôn lý thuyết ngay</button>
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
+  if(window.renderMathInElement){
+    renderMathInElement(overlay,{delimiters:[{left:'\\(',right:'\\)',display:false}]});
+  }
+}
+
+function closeNotificationAndShowResult(){
+  const el = document.getElementById('notifyOverlay');
+  if(el) el.remove();
+  switchTab('sat');
+  showScreen('result');
+  try { renderResult(); }
+  catch(err){
+    console.error('[SAT] renderResult error:', err);
+    const c = document.getElementById('satResultScreen');
+    c.innerHTML = `
+      <div class="card" style="border-left:5px solid #E53935;">
+        <h3>⚠️ Có lỗi xảy ra khi hiển thị kết quả chi tiết</h3>
+        <p>Chi tiết: <code>${err.message}</code></p>
+        <div style="margin-top:16px;display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn btn-primary" onclick="restartSameSet()">🔄 Làm lại</button>
+          <button class="btn btn-outline" onclick="backToSetSelector()">📚 Chọn bộ khác</button>
+        </div>
+      </div>`;
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function closeNotificationAndReview(){
+  closeNotificationAndShowResult();
+  setTimeout(()=>switchTab('knowledge'), 150);
+}
+
+function renderResult(){
+  const c = document.getElementById('satResultScreen');
+  c.style.display = 'block';
+
+  const setNum = testState.setNum;
+  const questions = SAT_SETS[setNum].questions;
+  let correct = 0, wrong = 0, unanswered = 0;
+
+  const topicStat = {};
+  Object.keys(TOPICS).forEach(k=>topicStat[k]={correct:0,total:0});
+  const wrongList = [];
+
+  questions.forEach((item,i)=>{
+    const ans = testState.answers[i];
+    topicStat[item.topic].total++;
+    if(ans === null){
+      unanswered++;
+      wrongList.push({idx:i, item, yourAns:null});
+    }else if(ans === item.ans){
+      correct++;
+      topicStat[item.topic].correct++;
+    }else{
+      wrong++;
+      wrongList.push({idx:i, item, yourAns:ans});
+    }
+  });
+
+  const total = questions.length;
+  const pct = Math.round(correct/total*100);
+  const estimatedSAT = Math.min(800, Math.max(200, Math.round(200 + (correct/total)*600)));
+  const timeUsed = TEST_DURATION - testState.timeLeft;
+  const tm = String(Math.floor(timeUsed/60)).padStart(2,'0');
+  const ts = String(timeUsed%60).padStart(2,'0');
+  const answered = correct + wrong;
+  const avgTime = answered > 0 ? Math.round(timeUsed/answered) : 0;
+  const avgTimeStr = `${Math.floor(avgTime/60)}:${String(avgTime%60).padStart(2,'0')}`;
+
+  let level, levelColor, levelIcon, levelDesc, levelAdvice;
+  if(pct >= 90) {
+    level = "XUẤT SẮC"; levelColor = "#4CAF50"; levelIcon = "🏆";
+    levelDesc = "Kiến thức hình học không gian của em rất vững vàng, phản xạ nhanh và chính xác. Em đã sẵn sàng chinh phục điểm cao trong kỳ thi Digital SAT!";
+    levelAdvice = "Duy trì phong độ bằng cách luyện thêm các bộ đề khó và các dạng bài tổng hợp. Tập trung vào tốc độ và độ chính xác.";
+  } else if(pct >= 75) {
+    level = "TỐT"; levelColor = "#2C5AA0"; levelIcon = "⭐";
+    levelDesc = "Em nắm tốt kiến thức cơ bản và nhiều dạng bài nâng cao. Chỉ còn một vài chủ đề cần tinh chỉnh để đạt điểm tối đa.";
+    levelAdvice = "Tập trung khắc phục các chủ đề dưới 80% để nâng điểm SAT Math ước lượng. Luyện thêm dạng bài góc – khoảng cách.";
+  } else if(pct >= 60) {
+    level = "KHÁ"; levelColor = "#E8A317"; levelIcon = "📈";
+    levelDesc = "Em có nền tảng khá tốt nhưng còn sai sót ở các dạng bài trung bình và nâng cao. Cần luyện tập có hệ thống hơn.";
+    levelAdvice = "Luyện thêm dạng bài tổng hợp và bài toán thực tế. Đặc biệt chú trọng các chủ đề có tỉ lệ đúng dưới 60%.";
+  } else if(pct >= 40) {
+    level = "TRUNG BÌNH"; levelColor = "#FF9800"; levelIcon = "📚";
+    levelDesc = "Em đã có một số kiến thức nền tảng nhưng còn nhiều lỗ hổng. Cần củng cố lý thuyết trước khi luyện nâng cao.";
+    levelAdvice = "Quay lại ôn kỹ mục I, II, III trong phần Kiến thức. Làm lại Nhóm 1 của phần Luyện tập cho đến khi đạt ≥ 80%.";
+  } else {
+    level = "CẦN CỐ GẮNG"; levelColor = "#E53935"; levelIcon = "🔧";
+    levelDesc = "Em cần xây dựng lại nền tảng từ đầu. Đừng nản — hãy bắt đầu từ những dạng bài cơ bản nhất.";
+    levelAdvice = "Đọc kỹ phần Kiến thức, ghi nhớ công thức cốt lõi. Làm chậm và kỹ từng dạng bài ở Nhóm 1 trước khi quay lại bộ đề này.";
+  }
+
+  let timeEval, timeIcon, timeColor;
+  if(timeUsed <= TEST_DURATION * 0.7) {
+    timeEval = "Quản lý thời gian xuất sắc"; timeIcon = "🚀"; timeColor = "#4CAF50";
+  } else if(timeUsed <= TEST_DURATION * 0.9) {
+    timeEval = "Quản lý thời gian tốt"; timeIcon = "⏱️"; timeColor = "#2C5AA0";
+  } else if(timeUsed < TEST_DURATION) {
+    timeEval = "Sát giờ — cần tăng tốc"; timeIcon = "⏰"; timeColor = "#E8A317";
+  } else {
+    timeEval = "Hết giờ"; timeIcon = "🚨"; timeColor = "#E53935";
+  }
+
+  const topicList = Object.keys(topicStat)
+    .filter(k => topicStat[k].total > 0)
+    .map(k => ({
+      key: k,
+      name: TOPICS[k],
+      correct: topicStat[k].correct,
+      total: topicStat[k].total,
+      pct: Math.round(topicStat[k].correct/topicStat[k].total*100)
+    }))
+    .sort((a,b) => a.pct - b.pct);
+
+  const weakTopics = topicList.filter(t => t.pct < 60);
+  const mediumTopics = topicList.filter(t => t.pct >= 60 && t.pct < 80);
+  const strongTopics = topicList.filter(t => t.pct >= 80);
+
+  let roadmapPhases = [];
+
+  if(weakTopics.length > 0){
+    roadmapPhases.push({
+      phase: 1,
+      title: "Củng cố kiến thức nền tảng",
+      time: "1–3 ngày",
+      items: weakTopics.map(t => `<strong>${t.name}</strong> (${t.correct}/${t.total} = ${t.pct}%) — ${TOPIC_RECOMMENDATIONS[t.key]}`),
+      actions: [
+        {text: "📖 Ôn lý thuyết", tab: "knowledge"},
+        {text: "✏️ Luyện nhóm cơ bản", tab: "practice"}
+      ]
+    });
+  }
+
+  if(mediumTopics.length > 0){
+    roadmapPhases.push({
+      phase: 2,
+      title: "Luyện tập nâng cao",
+      time: "3–5 ngày",
+      items: mediumTopics.map(t => `<strong>${t.name}</strong> (${t.correct}/${t.total} = ${t.pct}%) — Cần thêm bài tập ở mức độ trung bình–khó để nâng tỉ lệ đúng lên ≥ 80%.`),
+      actions: [
+        {text: "✏️ Luyện nhóm trung bình", tab: "practice"},
+        {text: "🔄 Làm lại bộ đề này", action: "restart"}
+      ]
+    });
+  }
+
+  roadmapPhases.push({
+    phase: 3,
+    title: strongTopics.length > 0 ? "Duy trì & mở rộng" : "Luyện đề tổng hợp",
+    time: "Liên tục",
+    items: strongTopics.length > 0 
+      ? strongTopics.map(t => `<strong>${t.name}</strong> (${t.correct}/${t.total} = ${t.pct}%) — Duy trì phong độ, thử sức với bài khó hơn để nâng cao tốc độ và độ chính xác.`)
+      : ["Sau khi củng cố nền tảng, hãy luyện các bộ đề khác để làm quen dạng bài đa dạng."],
+    actions: [
+      {text: "📚 Chọn bộ khác", action: "back"},
+      {text: "⏱️ Luyện đề khác", tab: "sat"}
+    ]
+  });
+
+  const wrongByTopic = {};
+  wrongList.forEach(w => {
+    if(!wrongByTopic[w.item.topic]) wrongByTopic[w.item.topic] = [];
+    wrongByTopic[w.item.topic].push(w);
+  });
+  const priorityTopics = Object.entries(wrongByTopic)
+    .map(([key, list]) => ({key, name: TOPICS[key], count: list.length, questionNums: list.map(x => x.idx + 1)}))
+    .sort((a,b) => b.count - a.count);
+
+  c.innerHTML = `
+    <div class="result-hero">
+      <div>
+        <h2>🎉 Hoàn thành ${SAT_SETS[setNum].name}!</h2>
+        <p>Bạn đã làm ${total} câu trong ${tm}:${ts}. ${auto?'⏰ Hết giờ!':''} ${unanswered>0?`Còn ${unanswered} câu chưa trả lời.`:''}</p>
+      </div>
+      <div class="result-score">
+        <div class="num">${correct}</div>
+        <div class="den">/ ${total} câu đúng</div>
+        <div class="pct">${pct}%</div>
+      </div>
+    </div>
+
+    <div class="level-banner" style="border-left-color:${levelColor}">
+      <div class="level-icon" style="background:${levelColor}">${levelIcon}</div>
+      <div class="level-content">
+        <h3 style="color:${levelColor}">Đánh giá năng lực: ${level}</h3>
+        <p>${levelDesc}</p>
+        <div class="level-advice"><strong>💡 Định hướng:</strong> ${levelAdvice}</div>
+      </div>
+    </div>
+
+    <div class="result-stats">
+      <div class="stat-box green">
+        <div class="label">✅ Đúng</div>
+        <div class="value">${correct}</div>
+        <div class="sub">Chiếm ${pct}%</div>
+      </div>
+      <div class="stat-box red">
+        <div class="label">❌ Sai</div>
+        <div class="value">${wrong}</div>
+        <div class="sub">Cần xem lại</div>
+      </div>
+      <div class="stat-box yellow">
+        <div class="label">⚠ Bỏ trống</div>
+        <div class="value">${unanswered}</div>
+        <div class="sub">Chưa trả lời</div>
+      </div>
+      <div class="stat-box">
+        <div class="label">🎯 SAT Math ước lượng</div>
+        <div class="value">${estimatedSAT}</div>
+        <div class="sub">/ 800 điểm</div>
+      </div>
+    </div>
+
+    <div class="result-section-title"><span class="icon">⏱</span> Phân tích thời gian</div>
+    <div class="time-analysis">
+      <div class="time-block">
+        <div class="tb-icon">⏰</div>
+        <div class="tb-content">
+          <div class="tb-label">Tổng thời gian</div>
+          <div class="tb-value">${tm}:${ts}</div>
+          <div class="tb-desc">/ 45:00</div>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="tb-icon">⚡</div>
+        <div class="tb-content">
+          <div class="tb-label">Trung bình / câu</div>
+          <div class="tb-value">${avgTimeStr}</div>
+          <div class="tb-desc">Mục tiêu: ≤ 1:30</div>
+        </div>
+      </div>
+      <div class="time-block">
+        <div class="tb-icon" style="background:${timeColor}22;color:${timeColor}">${timeIcon}</div>
+        <div class="tb-content">
+          <div class="tb-label">Đánh giá</div>
+          <div class="tb-value" style="color:${timeColor};font-size:15px">${timeEval}</div>
+          <div class="tb-desc">${timeUsed < TEST_DURATION ? `Còn dư ${Math.floor((TEST_DURATION-timeUsed)/60)}:${String((TEST_DURATION-timeUsed)%60).padStart(2,'0')}` : 'Đã dùng hết thời gian'}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-section-title"><span class="icon">📊</span> Phân tích chi tiết theo chủ đề</div>
+    <table class="topic-table">
+      <thead>
+        <tr><th style="width:28%">Chủ đề</th><th style="width:38%">Tỉ lệ đúng</th><th style="width:14%;text-align:right">Số câu</th><th style="width:20%;text-align:center">Trạng thái</th></tr>
+      </thead>
+      <tbody>
+        ${topicList.map(t=>{
+          let cls = '', status = '', statusColor = '';
+          if(t.pct >= 80){ cls=''; status='✅ Vững'; statusColor='#4CAF50'; }
+          else if(t.pct >= 60){ cls='warn'; status='⚠ Cần luyện'; statusColor='#E8A317'; }
+          else { cls='bad'; status='🔴 Yếu'; statusColor='#E53935'; }
+          return `<tr>
+            <td><strong>${t.name}</strong></td>
+            <td>
+              <div class="topic-bar-cell">
+                <div class="topic-bar"><div class="topic-bar-fill ${cls}" style="width:${t.pct}%"></div></div>
+                <span style="min-width:44px;font-weight:700;color:var(--sat-gray)">${t.pct}%</span>
+              </div>
+            </td>
+            <td style="text-align:right"><span class="topic-score">${t.correct}/${t.total}</span></td>
+            <td style="text-align:center"><strong style="color:${statusColor};font-size:13px">${status}</strong></td>
+          </tr>
+          <tr><td colspan="4" style="padding:0 16px 12px;border-bottom:1px solid #eef2f8">
+            <div class="topic-recommend">📌 <strong>Gợi ý:</strong> ${TOPIC_RECOMMENDATIONS[t.key]}</div>
+          </td></tr>`;
+        }).join('')}
+      </tbody>
+    </table>
+
+    <div class="roadmap">
+      <h3>🗺️ Lộ trình ôn tập cá nhân hóa</h3>
+      <p class="roadmap-sub">Dựa trên kết quả của em, đây là lộ trình được thiết kế riêng để khắc phục điểm yếu và phát huy điểm mạnh:</p>
+      ${roadmapPhases.map(p=>`
+        <div class="roadmap-phase phase-${p.phase}">
+          <div class="phase-num">${p.phase}</div>
+          <div class="phase-content">
+            <h4>Giai đoạn ${p.phase}: ${p.title} <span class="phase-time">⏳ ${p.time}</span></h4>
+            <ul>${p.items.map(it=>`<li>${it}</li>`).join('')}</ul>
+            <div class="phase-actions">
+              ${p.actions.map(a=>{
+                if(a.action === 'restart') return `<button class="btn btn-primary btn-sm" onclick="restartSameSet()">${a.text}</button>`;
+                if(a.action === 'back') return `<button class="btn btn-outline btn-sm" onclick="backToSetSelector()">${a.text}</button>`;
+                return `<button class="btn btn-outline btn-sm" onclick="switchTab('${a.tab}')">${a.text}</button>`;
+              }).join('')}
+            </div>
+          </div>
+        </div>
+      `).join('')}
+    </div>
+
+    ${wrongList.length > 0 ? `
+    <div class="result-section-title"><span class="icon" style="background:#fdeaea;color:var(--sat-red)">🔍</span> Phân tích chi tiết ${wrongList.length} câu sai / bỏ trống</div>
+    ${wrongList.map(w=>{
+      const item = w.item;
+      const cls = w.yourAns === null ? 'unanswered' : '';
+      const yourText = w.yourAns === null ? '— Không trả lời —' : item.opts[w.yourAns];
+      return `<div class="wrong-item ${cls}">
+        <div class="wrong-head">
+          <div class="wrong-num">${w.idx+1}</div>
+          <div class="wrong-q">
+            ${item.q}
+            <div><span class="topic-tag">${TOPICS[item.topic]}</span></div>
+          </div>
+        </div>
+        <div class="ans-row">
+          <div class="ans-box your">
+            <div class="lbl">Bạn chọn</div>
+            <div class="val">${w.yourAns === null ? '—' : letterMap[w.yourAns]+'. '}${yourText}</div>
+          </div>
+          <div class="ans-box correct">
+            <div class="lbl">Đáp án đúng</div>
+            <div class="val">${letterMap[item.ans]}. ${item.opts[item.ans]}</div>
+          </div>
+        </div>
+        <div class="exp-box">
+          <div class="lbl">🧮 Lời giải chi tiết</div>
+          ${item.exp}
+        </div>
+        <div class="review-box">📖 ${item.review}</div>
+      </div>`;
+    }).join('')}` : `
+    <div class="roadmap" style="border-left-color:var(--sat-green)">
+      <h3>🎯 Tất cả câu trả lời đều chính xác!</h3>
+      <p style="font-size:14px;color:var(--sat-gray)">Không có câu nào sai. Em đã sẵn sàng cho các bộ đề khó hơn!</p>
+    </div>`}
+
+    ${priorityTopics.length > 0 ? `
+    <div class="result-section-title"><span class="icon" style="background:#fff3cd;color:#b8860b">🎯</span> Định hướng ôn tập ưu tiên</div>
+    <div class="priority-plan">
+      <div class="priority-intro">
+        <strong>📋 Dựa trên ${wrongList.length} câu bạn đã làm sai hoặc bỏ trống,</strong> đây là các chủ đề cần ưu tiên ôn lại — sắp xếp theo mức độ ảnh hưởng (số câu sai nhiều nhất lên đầu). Hãy làm theo từng bước được gợi ý để khắc phục triệt để.
+      </div>
+      ${priorityTopics.map((pt, idx) => {
+        let priorityLevel = 'low', priorityLabel = '🟢 Cần xem lại';
+        if(pt.count >= 3){ priorityLevel = 'high'; priorityLabel = '🔴 Ưu tiên cao'; }
+        else if(pt.count === 2){ priorityLevel = 'medium'; priorityLabel = '🟡 Ưu tiên trung bình'; }
+        const steps = PRIORITY_STEPS[pt.key] || [];
+        return `
+          <div class="priority-card ${priorityLevel}">
+            <div class="priority-header">
+              <div class="priority-rank">${idx+1}</div>
+              <div class="priority-info">
+                <div class="priority-name">${pt.name}</div>
+                <div class="priority-meta">${pt.count} câu sai · Câu ${pt.questionNums.join(', ')}</div>
+              </div>
+              <div class="priority-badge">${priorityLabel}</div>
+            </div>
+            <div class="priority-recommend">
+              📌 <strong>Trọng tâm ôn:</strong> ${TOPIC_RECOMMENDATIONS[pt.key]}
+            </div>
+            <div style="font-size:14px;font-weight:700;color:var(--sat-blue);margin-bottom:6px">📝 Các bước ôn cụ thể:</div>
+            <ol class="priority-steps">
+              ${steps.map(s => `<li>${s}</li>`).join('')}
+            </ol>
+            <div class="priority-actions">
+              <button class="btn btn-outline btn-sm" onclick="switchTab('knowledge')">📖 Xem lý thuyết</button>
+              <button class="btn btn-outline btn-sm" onclick="switchTab('practice')">✏️ Luyện nhóm phù hợp</button>
+              <button class="btn btn-primary btn-sm" onclick="restartSameSet()">🔄 Luyện lại bộ đề</button>
+            </div>
+          </div>
+        `;
+      }).join('')}
+    </div>
+    ` : ''}
+
+    <div class="result-actions">
+      <button class="btn btn-primary" onclick="restartSameSet()">🔄 Làm lại ${SAT_SETS[setNum].name}</button>
+      <button class="btn btn-outline" onclick="backToSetSelector()">📚 Chọn bộ khác</button>
+      <button class="btn btn-outline" onclick="switchTab('knowledge')">📖 Ôn lại lý thuyết</button>
+      <button class="btn btn-outline" onclick="switchTab('practice')">✏️ Luyện tập thêm</button>
+    </div>
+  `;
+
+  if(window.renderMathInElement){
+    renderMathInElement(c,{delimiters:[{left:'\\(',right:'\\)',display:false}]});
+  }
+}
+
+function restartSameSet(){
+  if(!testState) return;
+  const setNum = testState.setNum;
+  const c = document.getElementById('satResultScreen');
+  c.style.display = 'none';
+  c.innerHTML = '';
+  const t = document.getElementById('satTestScreen');
+  t.style.display = 'none';
+  switchTab('sat');
+  showScreen('test');
+  startSetTest(setNum);
+}
+
+function backToSetSelector(){
+  const c = document.getElementById('satResultScreen');
+  c.style.display = 'none';
+  c.innerHTML = '';
+  const t = document.getElementById('satTestScreen');
+  t.style.display = 'none';
+  switchTab('sat');
+  showScreen('selector');
+  testState = null;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+renderSatSetSelector();
+
+window.addEventListener('load',()=>{
+  if(window.renderMathInElement){
+    renderMathInElement(document.body,{delimiters:[{left:'\\(',right:'\\)',display:false},{left:'\\[',right:'\\]',display:true}]});
+  }
+});
+</script>
+</body>
+</html>
